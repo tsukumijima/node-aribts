@@ -12,5 +12,6 @@ module.exports = {
     TsTableDit: require("./dit"),
     TsTableSit: require("./sit"),
     TsTableSdtt: require("./sdtt"),
-    TsTableCdt: require("./cdt")
+    TsTableCdt: require("./cdt"),
+    TsTableBit: require("./bit"),
 };

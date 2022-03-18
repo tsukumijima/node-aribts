@@ -14,9 +14,10 @@ import {
     TsTableDit,
     TsTableSit,
     TsTableSdtt,
-    TsTableCdt
+    TsTableCdt,
 } from "./table";
 import { decode as decodeEIT } from "./table/eit";
+import { decode as decodeBIT } from "./table/bit";
 
 class TsStreamLite extends EventEmitter {
     info: { [pid: number]: TsInfo } = {};
@@ -303,6 +304,15 @@ class TsStreamLite extends EventEmitter {
 
                                 if (objSdtt !== null) {
                                     this.emit("sdtt", objBasic.PID, objSdtt);
+                                }
+                            }
+                        } else if (tableId === 0xC4) {
+                            // BIT
+                            if (this.listenerCount("bit")) {
+                                const objBit = decodeBIT(section);
+
+                                if (objBit !== null) {
+                                    this.emit("bit", objBasic.PID, objBit);
                                 }
                             }
                         } else if (tableId === 0xC8) {

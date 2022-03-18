@@ -372,6 +372,15 @@ class TsStream extends Transform {
                                     this.emit("sdtt", objBasic.PID, objSdtt);
                                 }
                             }
+                        } else if (tableId === 0xC4) {
+                            // BIT
+                            if (this.listenerCount("bit")) {
+                                let objBit = new tsTable.TsTableBit.decode(section);
+
+                                if (objBit !== null) {
+                                    this.emit("bit", objBasic.PID, objBit);
+                                }
+                            }
                         } else if (tableId === 0xC8) {
                             // CDT
                             if (this.listenerCount("cdt")) {
