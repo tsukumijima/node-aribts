@@ -13,7 +13,11 @@ class TsDate {
         const [year, month, day] = this.decodeDate();
         const [hour, minute, second] = this.decodeTime();
 
-        return new Date(year, month - 1, day, hour, minute, second);
+        const date =  new Date(year, month - 1, day, hour, minute, second);
+        const time = date.getTime();
+        const tz = date.getTimezoneOffset() * 60 * 1000;
+        const jst = 9 * 60 * 1000;
+        return new Date(time + tz + jst);
     }
 
     decodeDate(): [Year, Month, Day] {
