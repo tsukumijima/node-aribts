@@ -17,7 +17,7 @@ class TsDate {
         const time = date.getTime();
         const tz = date.getTimezoneOffset() * 60 * 1000;
         const jst = 9 * 60 * 60 * 1000;
-        return new Date(time + tz + jst);
+        return new Date(time - tz - jst);
     }
 
     decodeDate(): [Year, Month, Day] {
