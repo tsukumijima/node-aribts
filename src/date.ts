@@ -16,7 +16,7 @@ class TsDate {
         const date =  new Date(year, month - 1, day, hour, minute, second);
         const time = date.getTime();
         const tz = date.getTimezoneOffset() * 60 * 1000;
-        const jst = 9 * 60 * 1000;
+        const jst = 9 * 60 * 60 * 1000;
         return new Date(time + tz + jst);
     }
 
