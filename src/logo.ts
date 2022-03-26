@@ -1,4 +1,4 @@
-import { crc32 } from "@node-rs/crc32";
+import * as crc32 from "./crc32";
 import logoClut = require("./logo_clut");
 
 const PLTE_BUF = Buffer.allocUnsafe(4 + 4 + logoClut.length * 3 + 4);
@@ -19,7 +19,7 @@ const TRNS_BUF = Buffer.allocUnsafe(4 + 4 + logoClut.length + 4);
         PLTE_BUF.writeUInt8(palette[2], bytesWritten++);
     }
 
-    PLTE_BUF.writeInt32BE(crc32(PLTE_BUF.slice(4, bytesWritten)), bytesWritten);
+    PLTE_BUF.writeInt32BE(crc32.pngCalc(PLTE_BUF.slice(4, bytesWritten)), bytesWritten);
 }
 
 {
@@ -35,7 +35,7 @@ const TRNS_BUF = Buffer.allocUnsafe(4 + 4 + logoClut.length + 4);
         TRNS_BUF.writeUInt8(palette[3], bytesWritten++);
     }
 
-    TRNS_BUF.writeInt32BE(crc32(TRNS_BUF.slice(4, bytesWritten)), bytesWritten);
+    TRNS_BUF.writeInt32BE(crc32.pngCalc(TRNS_BUF.slice(4, bytesWritten)), bytesWritten);
 }
 
 class TsLogo {
