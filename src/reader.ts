@@ -43,8 +43,8 @@ class TsReader {
         while (length > 31) {
             const bits = (length - 1) % 31 + 1;
 
-            value *= 0x80000000;
             value += this.readBitsRaw(bits);
+            value *= 0x80000000;
 
             length -= bits;
         }
