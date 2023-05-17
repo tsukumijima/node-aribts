@@ -1,0 +1,15 @@
+export const TsTablePat: typeof import("./pat");
+export const TsTableCat: typeof import("./cat");
+export const TsTablePmt: typeof import("./pmt");
+export const TsTableNit: typeof import("./nit");
+export const TsTableDsmcc: typeof import("./dsmcc");
+export const TsTableSdt: typeof import("./sdt");
+export const TsTableBat: typeof import("./bat");
+export const TsTableEit: typeof import("./eit");
+export const TsTableTdt: typeof import("./tdt");
+export const TsTableTot: typeof import("./tot");
+export const TsTableDit: typeof import("./dit");
+export const TsTableSit: typeof import("./sit");
+export const TsTableSdtt: typeof import("./sdtt");
+export const TsTableCdt: typeof import("./cdt");
+export const TsTableBit: typeof import("./bit");

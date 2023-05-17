@@ -6,6 +6,4 @@ node_modules
 *.tmp
 *.tsbuildinfo
 
-/lib
-
 /.vscode
