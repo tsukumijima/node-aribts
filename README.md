@@ -10,7 +10,7 @@ npm i --save aribts
 This example selects only first pmt.
 
 ```js
-import * as aribts from "aribts";
+const aribts = require("aribts");
 
 const readable = fs.createReadStream(process.argv[2]);
 const tsStream = new aribts.TsStream({
@@ -26,7 +26,7 @@ tsStream.write(writable);
 This example emits some info event.
 
 ```js
-import * as aribts from "aribts";
+const aribts = require("aribts");
 
 const readable = fs.createReadStream(process.argv[2]);
 const tsStream = new aribts.TsStream();

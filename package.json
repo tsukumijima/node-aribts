@@ -1,6 +1,6 @@
 {
   "name": "@tsukumijima/aribts",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "MPEG-2 TS Stream Tool for node",
   "main": "lib/index.js",
   "scripts": {
