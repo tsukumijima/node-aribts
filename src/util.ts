@@ -68,18 +68,28 @@ function checkSections(subTable) {
 }
 
 class TsUtil {
-    download_data_ids: any;
-    download_ids: any;
-    epg: any;
-    logo_id_refs: any;
-    logo_ids: any;
-    original_network_id: any;
-    service_ids: any;
-    services: any;
-    time: any;
-    transport_stream_id: any;
-    transport_streams: any;
-    versions: any;
+    download_data_ids: Map<number, { [key: string]: any }>;
+    download_ids: Map<number, { [key: string]: any }>;
+    epg: TsEpg;
+    logo_id_refs: Map<number, Map<number, Map<number, { [key: string]: any }>>>;
+    logo_ids: Map<number, Map<number, { [key: string]: any }>>;
+    original_network_id: number;
+    service_ids: { [key: string]: any };
+    services: Map<number, Map<number, { [key: string]: any }>>;
+    time: Date;
+    transport_stream_id: number;
+    transport_streams: Map<number, { [key: string]: any }>;
+    versions: {
+        pat: Map<any, any>;
+        cat: Map<any, any>;
+        pmt: Map<any, any>;
+        dsmcc: Map<any, any>;
+        nit: Map<any, any>;
+        sdt: Map<any, any>;
+        bat: Map<any, any>;
+        sdtt: Map<any, any>;
+        cdt: Map<any, any>;
+    };
     constructor() {
         this.reset();
     }

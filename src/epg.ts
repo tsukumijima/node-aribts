@@ -4,7 +4,29 @@ import TsDate from "./date";
 import epgTable from "./epg_table";
 
 class TsEpg {
-    epg: any;
+    epg: Map<number, Map<number, Map<number, {
+        pf: {
+            present: any;
+            following: any;
+        };
+        schedule: any;
+        basic_flags: {
+            flags: {
+                flag: Buffer;
+                ignore: Buffer;
+                version_number: number;
+            }[];
+            last_flags_id: number;
+        };
+        extended_flags: {
+            flags: {
+                flag: Buffer;
+                ignore: Buffer;
+                version_number: number;
+            }[];
+            last_flags_id: number;
+        };
+    }>>>;
     constructor() {
         this.epg = new Map();
     }
