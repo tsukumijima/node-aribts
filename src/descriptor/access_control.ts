@@ -1,9 +1,9 @@
-"use strict";
-
+import { Buffer } from "buffer";
 import TsReader from "../reader";
 
 class TsDescriptorAccessControl {
-    constructor(buffer) {
+    buffer: Buffer;
+    constructor(buffer: Buffer) {
         this.buffer = buffer;
     }
 
@@ -11,14 +11,21 @@ class TsDescriptorAccessControl {
         let reader = new TsReader(this.buffer);
         let objDescriptor = {};
 
+        // @ts-expect-error TS(2339): Property '_raw' does not exist on type '{}'.
         objDescriptor._raw = this.buffer;
 
+        // @ts-expect-error TS(2339): Property 'descriptor_tag' does not exist on type '... Remove this comment to see the full error message
         objDescriptor.descriptor_tag = reader.uimsbf(8);
+        // @ts-expect-error TS(2339): Property 'descriptor_length' does not exist on typ... Remove this comment to see the full error message
         objDescriptor.descriptor_length = reader.uimsbf(8);
 
+        // @ts-expect-error TS(2339): Property 'CA_system_id' does not exist on type '{}... Remove this comment to see the full error message
         objDescriptor.CA_system_id = reader.uimsbf(16);
+        // @ts-expect-error TS(2339): Property 'transmission_type' does not exist on typ... Remove this comment to see the full error message
         objDescriptor.transmission_type = reader.bslbf(3);
+        // @ts-expect-error TS(2339): Property 'PID' does not exist on type '{}'.
         objDescriptor.PID = reader.uimsbf(13);
+        // @ts-expect-error TS(2339): Property 'private_data_byte' does not exist on typ... Remove this comment to see the full error message
         objDescriptor.private_data_byte = reader.readBytes(2 + objDescriptor.descriptor_length - (reader.position >> 3));
 
         return objDescriptor;

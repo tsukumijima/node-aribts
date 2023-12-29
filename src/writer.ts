@@ -1,4 +1,6 @@
 class TsWriter {
+    buffer: any;
+    position: any;
     constructor(buffer, position) {
         this.buffer = buffer;
         this.position = position || 0;

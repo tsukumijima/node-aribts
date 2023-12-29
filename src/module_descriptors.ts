@@ -1,7 +1,8 @@
 import * as tsModuleDescriptor from "./module_descriptor";
 
 class TsModuleDescriptors {
-    constructor(buffer) {
+    buffer: Buffer;
+    constructor(buffer: Buffer) {
         this.buffer = buffer;
     }
 

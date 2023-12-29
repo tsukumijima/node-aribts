@@ -4,6 +4,7 @@ import TsDate from "./date";
 import epgTable from "./epg_table";
 
 class TsEpg {
+    epg: any;
     constructor() {
         this.epg = new Map();
     }

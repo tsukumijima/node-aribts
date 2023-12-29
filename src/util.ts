@@ -68,6 +68,18 @@ function checkSections(subTable) {
 }
 
 class TsUtil {
+    download_data_ids: any;
+    download_ids: any;
+    epg: any;
+    logo_id_refs: any;
+    logo_ids: any;
+    original_network_id: any;
+    service_ids: any;
+    services: any;
+    time: any;
+    transport_stream_id: any;
+    transport_streams: any;
+    versions: any;
     constructor() {
         this.reset();
     }
@@ -280,6 +292,7 @@ class TsUtil {
                                 // Logo
                                 let dataModule = new tsDataModule.TsDataModuleLogo(_module.dataModuleByte).decode();
 
+                                // @ts-expect-error TS(2339): Property 'logos' does not exist on type '{}'.
                                 for (let logo of dataModule.logos) {
                                     let original_network_ids = new Set();
 
@@ -306,6 +319,7 @@ class TsUtil {
 
                                         let logoData = new TsLogo(logo.data_byte).decode();
 
+                                        // @ts-expect-error TS(2339): Property 'logo_type' does not exist on type '{}'.
                                         logo_id.content.set(dataModule.logo_type, logoData);
 
                                         if (logo_id.content.size === 6) {
@@ -354,24 +368,33 @@ class TsUtil {
         for (let transport_stream of objNit.transport_streams) {
             let _transport_stream = {};
 
+            // @ts-expect-error TS(2339): Property 'transport_stream_id' does not exist on t... Remove this comment to see the full error message
             _transport_stream.transport_stream_id = transport_stream.transport_stream_id;
+            // @ts-expect-error TS(2339): Property 'original_network_id' does not exist on t... Remove this comment to see the full error message
             _transport_stream.original_network_id = transport_stream.original_network_id;
+            // @ts-expect-error TS(2339): Property 'services' does not exist on type '{}'.
             _transport_stream.services = null;
+            // @ts-expect-error TS(2339): Property 'satellite_delivery_system' does not exis... Remove this comment to see the full error message
             _transport_stream.satellite_delivery_system = null;
+            // @ts-expect-error TS(2339): Property 'terrestrial_delivery_system' does not ex... Remove this comment to see the full error message
             _transport_stream.terrestrial_delivery_system = null;
 
             for (let descriptor of transport_stream.transport_descriptors) {
                 switch (descriptor.descriptor_tag) {
                     case 0x41:
                         // Service list
+                        // @ts-expect-error TS(2339): Property 'services' does not exist on type '{}'.
                         _transport_stream.services = {};
 
                         descriptor.services.forEach(service => {
                             let _service = {};
 
+                            // @ts-expect-error TS(2339): Property 'service_id' does not exist on type '{}'.
                             _service.service_id = service.service_id;
+                            // @ts-expect-error TS(2339): Property 'service_type' does not exist on type '{}... Remove this comment to see the full error message
                             _service.service_type = service.service_type;
 
+                            // @ts-expect-error TS(2339): Property 'services' does not exist on type '{}'.
                             _transport_stream.services[service.service_id] = _service;
                         });
 
@@ -379,25 +402,38 @@ class TsUtil {
 
                     case 0x43:
                         // Satellite delivery system
+                        // @ts-expect-error TS(2339): Property 'satellite_delivery_system' does not exis... Remove this comment to see the full error message
                         _transport_stream.satellite_delivery_system = {};
 
+                        // @ts-expect-error TS(2339): Property 'satellite_delivery_system' does not exis... Remove this comment to see the full error message
                         _transport_stream.satellite_delivery_system.frequency = descriptor.frequency;
+                        // @ts-expect-error TS(2339): Property 'satellite_delivery_system' does not exis... Remove this comment to see the full error message
                         _transport_stream.satellite_delivery_system.orbital_position = descriptor.orbital_position;
+                        // @ts-expect-error TS(2339): Property 'satellite_delivery_system' does not exis... Remove this comment to see the full error message
                         _transport_stream.satellite_delivery_system.west_east_flag = descriptor.west_east_flag;
+                        // @ts-expect-error TS(2339): Property 'satellite_delivery_system' does not exis... Remove this comment to see the full error message
                         _transport_stream.satellite_delivery_system.polarisation = descriptor.polarisation;
+                        // @ts-expect-error TS(2339): Property 'satellite_delivery_system' does not exis... Remove this comment to see the full error message
                         _transport_stream.satellite_delivery_system.modulation = descriptor.modulation;
+                        // @ts-expect-error TS(2339): Property 'satellite_delivery_system' does not exis... Remove this comment to see the full error message
                         _transport_stream.satellite_delivery_system.symbol_rate = descriptor.symbol_rate;
+                        // @ts-expect-error TS(2339): Property 'satellite_delivery_system' does not exis... Remove this comment to see the full error message
                         _transport_stream.satellite_delivery_system.FEC_inner = descriptor.FEC_inner;
 
                         break;
 
                     case 0xFA:
                         // Terrestrial delivery system
+                        // @ts-expect-error TS(2339): Property 'terrestrial_delivery_system' does not ex... Remove this comment to see the full error message
                         _transport_stream.terrestrial_delivery_system = {};
 
+                        // @ts-expect-error TS(2339): Property 'terrestrial_delivery_system' does not ex... Remove this comment to see the full error message
                         _transport_stream.terrestrial_delivery_system.area_code = descriptor.area_code;
+                        // @ts-expect-error TS(2339): Property 'terrestrial_delivery_system' does not ex... Remove this comment to see the full error message
                         _transport_stream.terrestrial_delivery_system.guard_interval = descriptor.guard_interval;
+                        // @ts-expect-error TS(2339): Property 'terrestrial_delivery_system' does not ex... Remove this comment to see the full error message
                         _transport_stream.terrestrial_delivery_system.transmission_mode = descriptor.transmission_mode;
+                        // @ts-expect-error TS(2339): Property 'terrestrial_delivery_system' does not ex... Remove this comment to see the full error message
                         _transport_stream.terrestrial_delivery_system.frequencies = descriptor.frequencies;
 
                         break;
@@ -439,36 +475,51 @@ class TsUtil {
         for (let service of objSdt.services) {
             let _service = {};
 
+            // @ts-expect-error TS(2339): Property 'service_id' does not exist on type '{}'.
             _service.service_id = service.service_id;
+            // @ts-expect-error TS(2339): Property 'running_status' does not exist on type '... Remove this comment to see the full error message
             _service.running_status = service.running_status;
+            // @ts-expect-error TS(2339): Property 'free_CA_mode' does not exist on type '{}... Remove this comment to see the full error message
             _service.free_CA_mode = service.free_CA_mode;
+            // @ts-expect-error TS(2339): Property 'service' does not exist on type '{}'.
             _service.service = null;
 
             for (let descriptor of service.descriptors) {
                 switch (descriptor.descriptor_tag) {
                     case 0x48:
                         // Service
+                        // @ts-expect-error TS(2339): Property 'service' does not exist on type '{}'.
                         _service.service = {};
 
+                        // @ts-expect-error TS(2339): Property 'service' does not exist on type '{}'.
                         _service.service.service_type = descriptor.service_type;
+                        // @ts-expect-error TS(2339): Property 'service' does not exist on type '{}'.
                         _service.service.service_provider_name = new TsChar(descriptor.service_provider_name_char).decode();
+                        // @ts-expect-error TS(2339): Property 'service' does not exist on type '{}'.
                         _service.service.service_name = new TsChar(descriptor.service_name_char).decode();
 
                         break;
 
                     case 0xCF:
                         // Logo transmission
+                        // @ts-expect-error TS(2339): Property 'logo_transmission' does not exist on typ... Remove this comment to see the full error message
                         _service.logo_transmission = {};
 
+                        // @ts-expect-error TS(2339): Property 'logo_transmission' does not exist on typ... Remove this comment to see the full error message
                         _service.logo_transmission.logo_transmission_type = descriptor.logo_transmission_type;
 
                         if (descriptor.logo_transmission_type === 1) {
+                            // @ts-expect-error TS(2339): Property 'logo_transmission' does not exist on typ... Remove this comment to see the full error message
                             _service.logo_transmission.logo_id = descriptor.logo_id;
+                            // @ts-expect-error TS(2339): Property 'logo_transmission' does not exist on typ... Remove this comment to see the full error message
                             _service.logo_transmission.logo_version = descriptor.logo_version;
+                            // @ts-expect-error TS(2339): Property 'logo_transmission' does not exist on typ... Remove this comment to see the full error message
                             _service.logo_transmission.download_data_id = descriptor.download_data_id;
                         } else if (descriptor.logo_transmission_type === 2) {
+                            // @ts-expect-error TS(2339): Property 'logo_transmission' does not exist on typ... Remove this comment to see the full error message
                             _service.logo_transmission.logo_id = descriptor.logo_id;
                         } else if (descriptor.logo_transmission_type === 3) {
+                            // @ts-expect-error TS(2339): Property 'logo_transmission' does not exist on typ... Remove this comment to see the full error message
                             _service.logo_transmission.logo_char = descriptor.logo_char;
                         }
 
@@ -579,18 +630,23 @@ class TsUtil {
                 // Logo
                 let dataModule = new tsDataModule.TsDataModuleCdtLogo(objCdt.data_module_byte).decode();
 
+                // @ts-expect-error TS(2339): Property 'logo_id' does not exist on type '{}'.
                 let logo_id = getNestedObject(this.logo_ids, [objCdt.original_network_id, dataModule.logo_id]);
 
+                // @ts-expect-error TS(2339): Property 'logo_version' does not exist on type '{}... Remove this comment to see the full error message
                 if (Object.keys(logo_id).length === 0 || dataModule.logo_version !== logo_id.version) {
                     logo_id.content = new Map();
+                    // @ts-expect-error TS(2339): Property 'logo_version' does not exist on type '{}... Remove this comment to see the full error message
                     logo_id.version = dataModule.logo_version;
                     logo_id.flag = false;
                 }
 
                 if (logo_id.flag) return false;
 
+                // @ts-expect-error TS(2339): Property 'data_byte' does not exist on type '{}'.
                 let logoData = new TsLogo(dataModule.data_byte).decode();
 
+                // @ts-expect-error TS(2339): Property 'logo_type' does not exist on type '{}'.
                 logo_id.content.set(dataModule.logo_type, logoData);
 
                 if (logo_id.content.size === 6) {

@@ -1,9 +1,9 @@
-"use strict";
-
+import { Buffer } from "buffer";
 import TsReader from "../reader";
 
 class TsDescriptorEventGroup {
-    constructor(buffer) {
+    buffer: Buffer;
+    constructor(buffer: Buffer) {
         this.buffer = buffer;
     }
 
@@ -11,38 +11,57 @@ class TsDescriptorEventGroup {
         let reader = new TsReader(this.buffer);
         let objDescriptor = {};
 
+        // @ts-expect-error TS(2339): Property '_raw' does not exist on type '{}'.
         objDescriptor._raw = this.buffer;
 
+        // @ts-expect-error TS(2339): Property 'descriptor_tag' does not exist on type '... Remove this comment to see the full error message
         objDescriptor.descriptor_tag = reader.uimsbf(8);
+        // @ts-expect-error TS(2339): Property 'descriptor_length' does not exist on typ... Remove this comment to see the full error message
         objDescriptor.descriptor_length = reader.uimsbf(8);
 
+        // @ts-expect-error TS(2339): Property 'group_type' does not exist on type '{}'.
         objDescriptor.group_type = reader.uimsbf(4);
+        // @ts-expect-error TS(2339): Property 'event_count' does not exist on type '{}'... Remove this comment to see the full error message
         objDescriptor.event_count = reader.uimsbf(4);
+        // @ts-expect-error TS(2339): Property 'events' does not exist on type '{}'.
         objDescriptor.events = [];
 
+        // @ts-expect-error TS(2339): Property 'event_count' does not exist on type '{}'... Remove this comment to see the full error message
         for (let i = 0; i < objDescriptor.event_count; i++) {
             let _event = {};
 
+            // @ts-expect-error TS(2339): Property 'service_id' does not exist on type '{}'.
             _event.service_id = reader.uimsbf(16);
+            // @ts-expect-error TS(2339): Property 'event_id' does not exist on type '{}'.
             _event.event_id = reader.uimsbf(16);
 
+            // @ts-expect-error TS(2339): Property 'events' does not exist on type '{}'.
             objDescriptor.events.push(_event);
         }
 
+        // @ts-expect-error TS(2339): Property 'group_type' does not exist on type '{}'.
         if (objDescriptor.group_type === 4 || objDescriptor.group_type === 5) {
+            // @ts-expect-error TS(2339): Property 'other_network_events' does not exist on ... Remove this comment to see the full error message
             objDescriptor.other_network_events = [];
 
+            // @ts-expect-error TS(2339): Property 'descriptor_length' does not exist on typ... Remove this comment to see the full error message
             while (reader.position >> 3 < 2 + objDescriptor.descriptor_length) {
                 let _event = {};
 
+                // @ts-expect-error TS(2339): Property 'original_network_id' does not exist on t... Remove this comment to see the full error message
                 _event.original_network_id = reader.uimsbf(16);
+                // @ts-expect-error TS(2339): Property 'transport_stream_id' does not exist on t... Remove this comment to see the full error message
                 _event.transport_stream_id = reader.uimsbf(16);
+                // @ts-expect-error TS(2339): Property 'service_id' does not exist on type '{}'.
                 _event.service_id = reader.uimsbf(16);
+                // @ts-expect-error TS(2339): Property 'event_id' does not exist on type '{}'.
                 _event.event_id = reader.uimsbf(16);
 
+                // @ts-expect-error TS(2339): Property 'other_network_events' does not exist on ... Remove this comment to see the full error message
                 objDescriptor.other_network_events.push(_event);
             }
         } else {
+            // @ts-expect-error TS(2339): Property 'private_data_byte' does not exist on typ... Remove this comment to see the full error message
             objDescriptor.private_data_byte = reader.readBytes(2 + objDescriptor.descriptor_length - (reader.position >> 3));
         }
 

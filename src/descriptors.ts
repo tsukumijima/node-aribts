@@ -1,9 +1,8 @@
-"use strict";
-
 import * as tsDescriptor from "./descriptor";
 
 class TsDescriptors {
-    constructor(buffer) {
+    buffer: Buffer;
+    constructor(buffer: Buffer) {
         this.buffer = buffer;
     }
 
