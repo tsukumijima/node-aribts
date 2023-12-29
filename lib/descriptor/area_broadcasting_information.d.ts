@@ -1,12 +1,10 @@
-export = TsDescriptorAreaBroadcastingInformation;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorAreaBroadcastingInformation {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        num_of_station_point: number;
-        station_points: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorAreaBroadcastingInformation;

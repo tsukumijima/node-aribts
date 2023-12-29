@@ -1,18 +1,10 @@
-export = TsDescriptorPartialTransportStreamTime;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorPartialTransportStreamTime {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        event_version_number: number;
-        event_start_time: Buffer;
-        duration: Buffer;
-        offset: Buffer;
-        offset_flag: number;
-        other_descriptor_status: number;
-        jst_time_flag: number;
-        jst_time: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorPartialTransportStreamTime;

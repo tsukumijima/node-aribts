@@ -1,12 +1,10 @@
-export = TsDataModuleCdtLogo;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDataModuleCdtLogo {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        logo_type: number;
-        logo_id: number;
-        logo_version: number;
-        data_size: number;
-        data_byte: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDataModuleCdtLogo;

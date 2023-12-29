@@ -1,15 +1,10 @@
-export = TsDescriptorLogoTransmission;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorLogoTransmission {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        logo_transmission_type: number;
-        logo_id: number;
-        logo_version: number;
-        download_data_id: number;
-        logo_char: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorLogoTransmission;

@@ -1,13 +1,10 @@
-export = TsDescriptorConditionalAccess;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorConditionalAccess {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        CA_system_ID: number;
-        CA_PID: number;
-        private_data_byte: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorConditionalAccess;

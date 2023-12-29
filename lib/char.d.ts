@@ -1,4 +1,5 @@
 /// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsChar {
     buffer: Buffer;
     position: number;
@@ -25,4 +26,4 @@ declare class TsChar {
     getSjis(first: number, second: number): number[];
     getUnicode(first: number, second: number): string;
 }
-export = TsChar;
+export default TsChar;

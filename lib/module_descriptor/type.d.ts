@@ -1,11 +1,10 @@
-export = TsModuleDescriptorType;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsModuleDescriptorType {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        text_char: Buffer;
+        [key: string]: any;
     };
 }
+export default TsModuleDescriptorType;

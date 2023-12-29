@@ -1,9 +1,10 @@
-export = TsDataModuleCommonTable;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDataModuleCommonTable {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        number_of_loop: number;
-        common_tables: any[];
+        [key: string]: any;
     };
 }
+export default TsDataModuleCommonTable;

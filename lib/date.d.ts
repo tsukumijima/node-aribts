@@ -1,4 +1,5 @@
 /// <reference types="node" />
+import { Buffer } from "buffer";
 type Year = number;
 type Month = number;
 type Day = number;
@@ -13,4 +14,4 @@ declare class TsDate {
     decodeTime(): [Hour, Minute, Second];
     decodeOffset(): [Hour, Minute];
 }
-export = TsDate;
+export default TsDate;

@@ -1,4 +1,4 @@
-declare const charTable: {
+declare const _default: {
     ascii: {
         33: number[];
         34: number[];
@@ -1253,4 +1253,4 @@ declare const charTable: {
         30283: string;
     };
 };
-export = charTable;
+export default _default;

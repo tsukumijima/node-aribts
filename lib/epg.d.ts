@@ -1,6 +1,30 @@
-export = TsEpg;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsEpg {
-    epg: Map<any, any>;
+    epg: Map<number, Map<number, Map<number, {
+        pf: {
+            present: any;
+            following: any;
+        };
+        schedule: any;
+        basic_flags: {
+            flags: {
+                flag: Buffer;
+                ignore: Buffer;
+                version_number: number;
+            }[];
+            last_flags_id: number;
+        };
+        extended_flags: {
+            flags: {
+                flag: Buffer;
+                ignore: Buffer;
+                version_number: number;
+            }[];
+            last_flags_id: number;
+        };
+    }>>>;
+    constructor();
     needUpdate(current: any, next: any): boolean;
     addEit(pid: any, objEit: any, time: any): boolean;
     hasPresent(onid: any, tsid: any, sid: any): boolean;
@@ -11,3 +35,4 @@ declare class TsEpg {
     getSchedule(): {};
     getScheduleAmount(): number[];
 }
+export default TsEpg;

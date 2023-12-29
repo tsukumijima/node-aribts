@@ -1,5 +1,6 @@
 /// <reference types="node" />
 /// <reference types="node" />
+import { Buffer } from "buffer";
 import { EventEmitter } from "events";
 import { TsInfo } from "./info";
 declare class TsStreamLite extends EventEmitter {
@@ -10,4 +11,4 @@ declare class TsStreamLite extends EventEmitter {
     write(packets: Buffer[]): void;
     end(): void;
 }
-export = TsStreamLite;
+export default TsStreamLite;

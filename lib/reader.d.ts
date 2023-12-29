@@ -1,4 +1,5 @@
 /// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsReader {
     buffer: Buffer;
     position: number;
@@ -14,4 +15,4 @@ declare class TsReader {
     tcimsbf(length: number): number;
     rpchof(length: number): number;
 }
-export = TsReader;
+export default TsReader;

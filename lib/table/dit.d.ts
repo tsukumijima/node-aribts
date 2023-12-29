@@ -1,12 +1,10 @@
-export = TsTableDit;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsTableDit {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        table_id: number;
-        section_syntax_indicator: number;
-        section_length: number;
-        transition_flag: number;
+        [key: string]: any;
     };
 }
+export default TsTableDit;

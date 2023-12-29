@@ -1,13 +1,10 @@
-export = TsDescriptorVideoWindow;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorVideoWindow {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        horizontal_offset: number;
-        vertical_offset: number;
-        window_priority: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorVideoWindow;

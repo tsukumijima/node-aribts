@@ -1,8 +1,9 @@
-export = TsWriter;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsWriter {
-    constructor(buffer: any, position: any);
-    buffer: any;
-    position: any;
+    buffer: Buffer;
+    position: number;
+    constructor(buffer: Buffer, position?: number);
     writeBits(length: any, value: any): void;
     writeBytes(length: any, value: any): void;
     next(length: any): void;
@@ -12,3 +13,4 @@ declare class TsWriter {
     tcimsbf(length: any, value: any): void;
     rpchof(length: any, value: any): void;
 }
+export default TsWriter;

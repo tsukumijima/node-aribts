@@ -1,14 +1,10 @@
-export = TsDescriptorLdtLinkage;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorLdtLinkage {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        original_service_id: number;
-        transport_stream_id: number;
-        original_network_id: number;
-        descriptions: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorLdtLinkage;

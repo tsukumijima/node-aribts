@@ -1,11 +1,10 @@
-export = TsDescriptorLocalTimeOffset;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorLocalTimeOffset {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        local_time_offsets: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorLocalTimeOffset;

@@ -1,13 +1,10 @@
-export = TsDescriptorTargetBackgroundGrid;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorTargetBackgroundGrid {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        horizontal_size: number;
-        vertical_size: number;
-        aspect_ratio_information: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorTargetBackgroundGrid;

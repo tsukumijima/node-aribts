@@ -1,14 +1,10 @@
-export = TsDescriptorCaService;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorCaService {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        CA_system_id: number;
-        ca_broadcaster_group_id: number;
-        message_control: number;
-        services: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorCaService;

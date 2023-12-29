@@ -1,11 +1,10 @@
-export = TsDescriptorIso639Language;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorIso639Language {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        ISO_639_languages: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorIso639Language;

@@ -1,11 +1,10 @@
-export = TsDescriptorCompatibility;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorCompatibility {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        compatibilityDescriptorLength: number;
-        descriptorCount: number;
-        descriptors: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorCompatibility;

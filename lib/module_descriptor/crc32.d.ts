@@ -1,11 +1,10 @@
-export = TsModuleDescriptorCrc32;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsModuleDescriptorCrc32 {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        CRC_32: Buffer;
+        [key: string]: any;
     };
 }
+export default TsModuleDescriptorCrc32;

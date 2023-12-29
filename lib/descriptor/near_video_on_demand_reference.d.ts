@@ -1,11 +1,10 @@
-export = TsDescriptorNearVideoOnDemandReference;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorNearVideoOnDemandReference {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        NVOD_references: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorNearVideoOnDemandReference;

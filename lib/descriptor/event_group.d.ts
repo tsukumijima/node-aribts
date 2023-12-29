@@ -1,15 +1,10 @@
-export = TsDescriptorEventGroup;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorEventGroup {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        group_type: number;
-        event_count: number;
-        events: any[];
-        other_network_events: any[];
-        private_data_byte: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorEventGroup;

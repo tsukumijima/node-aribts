@@ -1,12 +1,10 @@
-export = TsDescriptorConditionalPlayback;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorConditionalPlayback {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        conditional_playback_id: number;
-        conditional_playback_PID: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorConditionalPlayback;

@@ -1,13 +1,10 @@
-export = TsDescriptorSiParameter;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorSiParameter {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        parameter_version: number;
-        update_time: number;
-        table_descriptions: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorSiParameter;

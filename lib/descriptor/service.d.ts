@@ -1,15 +1,10 @@
-export = TsDescriptorService;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorService {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        service_type: number;
-        service_provider_name_length: number;
-        service_provider_name_char: Buffer;
-        service_name_length: number;
-        service_name_char: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorService;

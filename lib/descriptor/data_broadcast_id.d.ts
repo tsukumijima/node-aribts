@@ -1,12 +1,10 @@
-export = TsDescriptorDataBroadcastId;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorDataBroadcastId {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        data_broadcast_id: number;
-        id_selector_byte: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorDataBroadcastId;

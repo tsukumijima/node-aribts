@@ -1,17 +1,30 @@
-export = TsUtil;
+import TsEpg from "./epg";
 declare class TsUtil {
-    reset(): void;
-    original_network_id: any;
-    transport_stream_id: any;
-    service_ids: {};
-    transport_streams: Map<any, any>;
-    services: Map<any, any>;
+    download_data_ids: Map<number, {
+        [key: string]: any;
+    }>;
+    download_ids: Map<number, {
+        [key: string]: any;
+    }>;
     epg: TsEpg;
+    logo_id_refs: Map<number, Map<number, Map<number, {
+        [key: string]: any;
+    }>>>;
+    logo_ids: Map<number, Map<number, {
+        [key: string]: any;
+    }>>;
+    original_network_id: number;
+    service_ids: {
+        [key: string]: any;
+    };
+    services: Map<number, Map<number, {
+        [key: string]: any;
+    }>>;
     time: Date;
-    download_data_ids: Map<any, any>;
-    download_ids: Map<any, any>;
-    logo_ids: Map<any, any>;
-    logo_id_refs: Map<any, any>;
+    transport_stream_id: number;
+    transport_streams: Map<number, {
+        [key: string]: any;
+    }>;
     versions: {
         pat: Map<any, any>;
         cat: Map<any, any>;
@@ -23,6 +36,8 @@ declare class TsUtil {
         sdtt: Map<any, any>;
         cdt: Map<any, any>;
     };
+    constructor();
+    reset(): void;
     addPat(pid: any, objPat: any): boolean;
     addCat(pid: any, objCat: any): boolean;
     addPmt(pid: any, objPmt: any): boolean;
@@ -48,9 +63,9 @@ declare class TsUtil {
     hasLogo(logo_id: any, onid: any): boolean;
     getTransportStreams(onid: any): {};
     getServices(onid: any, tsid: any): {};
-    getOriginalNetworkId(): any;
-    getTransportStreamId(): any;
-    getServiceIds(): any[];
+    getOriginalNetworkId(): number;
+    getTransportStreamId(): number;
+    getServiceIds(): unknown[];
     getPresent(onid: any, tsid: any, sid: any): any;
     getFollowing(onid: any, tsid: any, sid: any): any;
     getSchedule(): {};
@@ -59,4 +74,4 @@ declare class TsUtil {
     getLogoId(onid: any, tsid: any, sid: any): any;
     getLogo(logo_id: any, onid: any): {};
 }
-import TsEpg = require("./epg");
+export default TsUtil;

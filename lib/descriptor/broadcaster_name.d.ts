@@ -1,11 +1,10 @@
-export = TsDescriptorBroadcasterName;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorBroadcasterName {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        char: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorBroadcasterName;

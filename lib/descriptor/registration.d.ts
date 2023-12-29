@@ -1,12 +1,10 @@
-export = TsDescriptorRegistration;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorRegistration {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        format_identifier: number;
-        additional_identification_info: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorRegistration;

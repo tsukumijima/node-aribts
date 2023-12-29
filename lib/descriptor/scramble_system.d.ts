@@ -1,11 +1,10 @@
-export = TsDescriptorScrambleSystem;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorScrambleSystem {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        scramble_system_id: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorScrambleSystem;

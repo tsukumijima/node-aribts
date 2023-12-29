@@ -1,14 +1,10 @@
-export = TsDescriptorDlProtection;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorDlProtection {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        DL_system_ID: number;
-        PID: number;
-        encrypt_protocol_number: number;
-        encrypt_info: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorDlProtection;

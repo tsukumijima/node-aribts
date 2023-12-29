@@ -1,13 +1,10 @@
-export = TsDescriptorReference;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorReference {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        information_provider_id: number;
-        event_relation_id: number;
-        references: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorReference;

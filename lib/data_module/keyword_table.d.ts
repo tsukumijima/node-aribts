@@ -1,9 +1,10 @@
-export = TsDataModuleKeywordTable;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDataModuleKeywordTable {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        number_of_loop: number;
-        keyword_tables: any[];
+        [key: string]: any;
     };
 }
+export default TsDataModuleKeywordTable;

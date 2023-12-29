@@ -1,4 +1,5 @@
 /// <reference types="node" />
+import { Buffer } from "buffer";
 export interface EIT {
     _raw: Buffer;
     table_id: number;

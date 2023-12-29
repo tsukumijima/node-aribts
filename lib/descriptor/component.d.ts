@@ -1,15 +1,10 @@
-export = TsDescriptorComponent;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorComponent {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        stream_content: number;
-        component_type: number;
-        component_tag: number;
-        ISO_639_language_code: Buffer;
-        text_char: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorComponent;

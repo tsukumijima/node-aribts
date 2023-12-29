@@ -1,11 +1,10 @@
-export = TsDescriptorDataStreamAlignment;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorDataStreamAlignment {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        alignment_type: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorDataStreamAlignment;

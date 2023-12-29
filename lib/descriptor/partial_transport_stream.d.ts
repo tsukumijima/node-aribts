@@ -1,13 +1,10 @@
-export = TsDescriptorPartialTransportStream;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorPartialTransportStream {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        peak_rate: number;
-        minimum_overall_smoothing_rate: number;
-        maximum_overall_smoothing_buffer: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorPartialTransportStream;

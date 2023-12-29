@@ -1,11 +1,10 @@
-export = TsDescriptorParentalRating;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorParentalRating {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        parental_ratings: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorParentalRating;

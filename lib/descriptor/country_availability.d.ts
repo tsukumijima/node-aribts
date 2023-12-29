@@ -1,12 +1,10 @@
-export = TsDescriptorCountryAvailability;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorCountryAvailability {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        country_availability_flag: number;
-        country_availabilities: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorCountryAvailability;

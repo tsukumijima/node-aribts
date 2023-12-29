@@ -1,12 +1,10 @@
-export = TsDescriptorSmoothingBuffer;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorSmoothingBuffer {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        sb_leak_rate: number;
-        sb_size: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorSmoothingBuffer;

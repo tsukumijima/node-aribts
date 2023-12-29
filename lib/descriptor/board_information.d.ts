@@ -1,14 +1,10 @@
-export = TsDescriptorBoardInformation;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorBoardInformation {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        title_length: number;
-        title_char: Buffer;
-        text_length: number;
-        text_char: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorBoardInformation;

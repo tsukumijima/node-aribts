@@ -1,4 +1,5 @@
 /// <reference types="node" />
+import { Buffer } from "buffer";
 interface Packet {
     _raw: Buffer;
     sync_byte: number;
@@ -53,4 +54,4 @@ declare class TsPacket {
     static getAdaptationField(buffer: Buffer): Buffer;
     static getData(buffer: Buffer): Buffer;
 }
-export = TsPacket;
+export default TsPacket;

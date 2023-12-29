@@ -1,16 +1,10 @@
-export = TsDescriptorAdvancedCableDeliverySystem;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorAdvancedCableDeliverySystem {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        extention_descriptor_tag: number;
-        PLP_ID: number;
-        effective_symbol_length: number;
-        guard_interval: number;
-        bundled_channel: number;
-        frequencies: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorAdvancedCableDeliverySystem;

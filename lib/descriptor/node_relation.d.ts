@@ -1,16 +1,10 @@
-export = TsDescriptorNodeRelation;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorNodeRelation {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        reference_type: number;
-        external_reference_flag: number;
-        information_provider_id: number;
-        event_relation_id: number;
-        reference_node_id: number;
-        reference_number: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorNodeRelation;

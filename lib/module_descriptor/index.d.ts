@@ -1,6 +1,7 @@
-export const TsModuleDescriptorUnknown: typeof import("./unknown");
-export const TsModuleDescriptorType: typeof import("./type");
-export const TsModuleDescriptorName: typeof import("./name");
-export const TsModuleDescriptorInfo: typeof import("./info");
-export const TsModuleDescriptorModuleLink: typeof import("./module_link");
-export const TsModuleDescriptorCrc32: typeof import("./crc32");
+import TsModuleDescriptorUnknown from "./unknown";
+import TsModuleDescriptorType from "./type";
+import TsModuleDescriptorName from "./name";
+import TsModuleDescriptorInfo from "./info";
+import TsModuleDescriptorModuleLink from "./module_link";
+import TsModuleDescriptorCrc32 from "./crc32";
+export { TsModuleDescriptorUnknown, TsModuleDescriptorType, TsModuleDescriptorName, TsModuleDescriptorInfo, TsModuleDescriptorModuleLink, TsModuleDescriptorCrc32 };

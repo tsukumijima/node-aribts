@@ -1,4 +1,5 @@
-export const TsDataModuleCommonTable: typeof import("./common_table");
-export const TsDataModuleKeywordTable: typeof import("./keyword_table");
-export const TsDataModuleLogo: typeof import("./logo");
-export const TsDataModuleCdtLogo: typeof import("./cdt_logo");
+import TsDataModuleCommonTable from "./common_table";
+import TsDataModuleKeywordTable from "./keyword_table";
+import TsDataModuleLogo from "./logo";
+import TsDataModuleCdtLogo from "./cdt_logo";
+export { TsDataModuleCommonTable, TsDataModuleKeywordTable, TsDataModuleLogo, TsDataModuleCdtLogo };

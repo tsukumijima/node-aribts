@@ -1,32 +1,10 @@
-export = TsDescriptorCarouselCompatibleComposite;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorCarouselCompatibleComposite {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        sub_descriptors: ({
-            _raw: any;
-            descriptor_tag: number;
-            descriptor_length: number;
-            text_char: Buffer;
-        } | {
-            _raw: any;
-            descriptor_tag: number;
-            descriptor_length: number;
-            position: number;
-            moduleId: number;
-        } | {
-            _raw: any;
-            descriptor_tag: number;
-            descriptor_length: number;
-            CRC_32: Buffer;
-        } | {
-            _raw: any;
-            descriptor_tag: number;
-            descriptor_length: number;
-            descriptor: Buffer;
-        })[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorCarouselCompatibleComposite;

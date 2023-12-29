@@ -1,13 +1,10 @@
-export = TsDescriptorMultiplexBufferUtilization;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorMultiplexBufferUtilization {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        bound_valid_flag: number;
-        LTW_offset_lower_bound: number;
-        LTW_offset_upper_bound: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorMultiplexBufferUtilization;

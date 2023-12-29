@@ -1,11 +1,10 @@
-export = TsDescriptorPartialReception;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorPartialReception {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        services: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorPartialReception;

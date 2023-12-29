@@ -1,14 +1,10 @@
-export = TsDescriptorTargetRegion;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorTargetRegion {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        region_spec_type: number;
-        target_region_spec: {
-            prefecture_bitmap: Buffer;
-        };
+        [key: string]: any;
     };
 }
+export default TsDescriptorTargetRegion;

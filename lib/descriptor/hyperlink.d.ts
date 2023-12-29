@@ -1,15 +1,10 @@
-export = TsDescriptorHyperlink;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorHyperlink {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        hyper_linkage_type: number;
-        link_destination_type: number;
-        selector_length: number;
-        selector: Buffer;
-        private_data: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorHyperlink;

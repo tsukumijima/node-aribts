@@ -1,11 +1,10 @@
-export = TsDescriptorPrivateDataIndicator;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorPrivateDataIndicator {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        private_data_indicator: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorPrivateDataIndicator;

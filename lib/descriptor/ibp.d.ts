@@ -1,13 +1,10 @@
-export = TsDescriptorIbp;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorIbp {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        closed_gop_flag: number;
-        identical_gop_flag: number;
-        max_gop_length: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorIbp;

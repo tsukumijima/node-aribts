@@ -1,11 +1,10 @@
-export = TsDescriptorStuffing;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorStuffing {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        stuffing_byte: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorStuffing;

@@ -1,14 +1,10 @@
-export = TsDescriptorMosaic;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorMosaic {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        mosaic_entry_point: number;
-        number_of_horizontal_elementary_cells: number;
-        number_of_vertical_elementary_cells: number;
-        logical_cells: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorMosaic;

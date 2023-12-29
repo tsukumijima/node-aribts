@@ -1,11 +1,10 @@
-export = TsDescriptorTimeShiftedService;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorTimeShiftedService {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        reference_service_id: number;
+        [key: string]: any;
     };
 }
+export default TsDescriptorTimeShiftedService;

@@ -1,12 +1,10 @@
-export = TsModuleDescriptorModuleLink;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsModuleDescriptorModuleLink {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        position: number;
-        moduleId: number;
+        [key: string]: any;
     };
 }
+export default TsModuleDescriptorModuleLink;

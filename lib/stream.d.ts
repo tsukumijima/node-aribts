@@ -1,30 +1,38 @@
-export = TsStream;
+/// <reference path="../src/types.d.ts" />
+/// <reference types="node" />
+/// <reference types="node" />
+import { Buffer } from "buffer";
+import { Transform } from "stream-browserify";
+import { TsInfo } from "./info";
+import { TsBuffer } from "./buffer";
 declare class TsStream extends Transform {
-    constructor(options?: {});
+    buffer: TsBuffer;
+    info: {
+        [pid: number]: TsInfo;
+    };
     options: {
         transform: boolean;
         skipSize: number;
         packetSize: number;
         bufferSize: number;
-        transPmtIds: any[];
-        transPmtSids: any[];
-        transPmtPids: any[];
-        transPids: any[];
+        transPmtIds: number[];
+        transPmtSids: number[];
+        transPmtPids: number[];
+        transPids: number[];
     };
-    buffer: TsBuffer;
-    info: {};
     trans: {
         pat: any;
         cat: any;
-        pmt: {};
-        pmtPids: any[];
-        pids: any[];
+        pmt: any;
+        pmtPids: number[];
+        pids: number[];
         rebuild: {
             pat: any;
             patCounter: number;
             patVersion: number;
         };
     };
+    constructor(options?: {});
     toPacket(buffer: any): {
         packets: any[];
         buffer: any;
@@ -39,5 +47,4 @@ declare class TsStream extends Transform {
     _transform(chunk: any, encoding: any, callback: any): void;
     _flush(callback: any): void;
 }
-import { Transform } from "stream";
-import { TsBuffer } from "./buffer";
+export default TsStream;

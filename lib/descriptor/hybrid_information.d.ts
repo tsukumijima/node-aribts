@@ -1,17 +1,10 @@
-export = TsDescriptorHybridInformation;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorHybridInformation {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        has_location: number;
-        location_type: number;
-        format: number;
-        component_tag: number;
-        module_id: number;
-        URL_length: number;
-        URL_byte: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorHybridInformation;

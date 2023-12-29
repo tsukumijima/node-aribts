@@ -1,14 +1,10 @@
-export = TsDescriptorTerrestrialDeliverySystem;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorTerrestrialDeliverySystem {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        area_code: number;
-        guard_interval: number;
-        transmission_mode: number;
-        frequencies: any[];
+        [key: string]: any;
     };
 }
+export default TsDescriptorTerrestrialDeliverySystem;

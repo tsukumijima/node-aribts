@@ -1,14 +1,10 @@
-export = TsDescriptorNetworkIdentification;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorNetworkIdentification {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        country_code: Buffer;
-        media_type: number;
-        network_id: number;
-        private_data: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorNetworkIdentification;

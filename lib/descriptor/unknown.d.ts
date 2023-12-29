@@ -1,11 +1,10 @@
-export = TsDescriptorUnknown;
+/// <reference types="node" />
+import { Buffer } from "buffer";
 declare class TsDescriptorUnknown {
-    constructor(buffer: any);
-    buffer: any;
+    buffer: Buffer;
+    constructor(buffer: Buffer);
     decode(): {
-        _raw: any;
-        descriptor_tag: number;
-        descriptor_length: number;
-        descriptor: Buffer;
+        [key: string]: any;
     };
 }
+export default TsDescriptorUnknown;
