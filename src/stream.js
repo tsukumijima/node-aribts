@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 const { Transform } = require("stream");
 const { TsInfo } = require("./info");
 const { TsBuffer } = require("./buffer");

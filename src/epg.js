@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 const TsChar = require("./char");
 const TsDate = require("./date");
 const epgTable = require("./epg_table");

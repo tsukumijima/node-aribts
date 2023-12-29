@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import { EventEmitter } from "events";
 import { TsInfo } from "./info";
 import TsPacket = require("./packet");
@@ -27,7 +28,7 @@ class TsStreamLite extends EventEmitter {
     }
 
     write(packets: Buffer[]) {
-        
+
         for (const packet of packets) {
             // Create TsPacket instance
             const tsPacket = new TsPacket(packet);

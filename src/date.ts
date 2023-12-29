@@ -1,3 +1,5 @@
+import { Buffer } from "buffer";
+
 type Year = number;
 type Month = number;
 type Day = number;
@@ -39,7 +41,7 @@ class TsDate {
 
     decodeTime(): [Hour, Minute, Second] {
         const buffer = this.buffer.length === 3 ? this.buffer : this.buffer.slice(2);
-        
+
         const hour = (buffer[0] >> 4) * 10 + (buffer[0] & 0x0F);
         const minite = (buffer[1] >> 4) * 10 + (buffer[1] & 0x0F);
         const second = (buffer[2] >> 4) * 10 + (buffer[2] & 0x0F);

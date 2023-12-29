@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import * as crc32 from "./crc32";
 import logoClut = require("./logo_clut");
 
@@ -49,7 +50,7 @@ class TsLogo {
     static decode(buffer: Buffer): Buffer {
         const pngBufferList = [buffer.slice(0, 33), PLTE_BUF, TRNS_BUF, buffer.slice(33)];
         const pngBufferLength = buffer.length + PLTE_BUF.length + TRNS_BUF.length;
-        
+
         return Buffer.concat(pngBufferList, pngBufferLength); // png
     }
 }
