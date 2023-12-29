@@ -1,5 +1,5 @@
 import { Buffer } from "buffer";
-import { Transform } from "stream";
+import { Transform } from "stream-browserify";
 import { TsInfo } from "./info";
 import { TsBuffer } from "./buffer";
 import TsPacket from "./packet";
@@ -22,13 +22,30 @@ import { decode as decodeEIT } from "./table/eit";
 import { decode as decodeBIT } from "./table/bit";
 
 class TsStream extends Transform {
-    buffer: any;
-    emit: any;
-    info: any;
-    listenerCount: any;
-    options: any;
-    push: any;
-    trans: any;
+    buffer: TsBuffer;
+    info: { [pid: number]: TsInfo } = {};
+    options: {
+        transform: boolean;
+        skipSize: number;
+        packetSize: number;
+        bufferSize: number;
+        transPmtIds: number[];
+        transPmtSids: number[];
+        transPmtPids: number[];
+        transPids: number[];
+    };
+    trans: {
+        pat: any;
+        cat: any;
+        pmt: any;
+        pmtPids: number[];
+        pids: number[];
+        rebuild: {
+            pat: any;
+            patCounter: number;
+            patVersion: number;
+        };
+    };
     constructor(options = {}) {
         super();
 
@@ -113,8 +130,7 @@ class TsStream extends Transform {
 
             // Emit "packet" event
             if (this.listenerCount("packet")) {
-                // @ts-expect-error TS(2554): Expected 0 arguments, but got 1.
-                this.emit("packet", objBasic.PID, tsPacket.decode(packet));
+                this.emit("packet", objBasic.PID, tsPacket.decode());
             }
 
             // Exists data
@@ -592,8 +608,7 @@ class TsStream extends Transform {
         }
 
         objPacket.data_byte = Buffer.concat([Buffer.alloc(1), bufferPat]);
-        // @ts-expect-error TS(2345): Argument of type '{ payload_unit_start_indicator: ... Remove this comment to see the full error message
-        this.trans.rebuild.pat = new TsPacket(Buffer.alloc(188, 0xFF)).encode(objPacket);
+        this.trans.rebuild.pat = new TsPacket(Buffer.alloc(188, 0xFF)).encode(objPacket as any);
 
         this.trans.rebuild.patVersion = (this.trans.rebuild.patVersion + 1) & 0x1F;
     }

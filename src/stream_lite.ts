@@ -21,8 +21,6 @@ import { decode as decodeEIT } from "./table/eit";
 import { decode as decodeBIT } from "./table/bit";
 
 class TsStreamLite extends EventEmitter {
-    emit: any;
-    listenerCount: any;
     info: { [pid: number]: TsInfo } = {};
 
     constructor() {

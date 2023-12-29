@@ -187,7 +187,6 @@ class TsPacket {
     }
 
     encode(objPacket: Packet): Buffer {
-        // @ts-expect-error TS(2554): Expected 2 arguments, but got 1.
         const writer = new TsWriter(this.buffer);
 
         writer.bslbf(8, 0x47);

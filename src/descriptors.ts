@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import * as tsDescriptor from "./descriptor";
 
 class TsDescriptors {

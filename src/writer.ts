@@ -1,9 +1,7 @@
+import { Buffer } from "buffer";
+
 class TsWriter {
-    buffer: any;
-    position: any;
-    constructor(buffer, position) {
-        this.buffer = buffer;
-        this.position = position || 0;
+    constructor(public buffer: Buffer, public position = 0) {
     }
 
     writeBits(length, value) {

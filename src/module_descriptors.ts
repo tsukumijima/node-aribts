@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import * as tsModuleDescriptor from "./module_descriptor";
 
 class TsModuleDescriptors {
