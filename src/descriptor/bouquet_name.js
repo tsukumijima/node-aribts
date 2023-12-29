@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorBouquetName {
     constructor(buffer) {
@@ -22,4 +22,4 @@ class TsDescriptorBouquetName {
     }
 }
 
-module.exports = TsDescriptorBouquetName;
+export default TsDescriptorBouquetName;

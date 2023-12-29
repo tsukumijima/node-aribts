@@ -1,6 +1,6 @@
 import { Buffer } from "buffer";
 import * as crc32 from "./crc32";
-import logoClut = require("./logo_clut");
+import logoClut from "./logo_clut";
 
 const PLTE_BUF = Buffer.allocUnsafe(4 + 4 + logoClut.length * 3 + 4);
 const TRNS_BUF = Buffer.allocUnsafe(4 + 4 + logoClut.length + 4);
@@ -55,4 +55,4 @@ class TsLogo {
     }
 }
 
-export = TsLogo;
+export default TsLogo;

@@ -1,8 +1,8 @@
 "use strict";
 
-const TsCrc32 = require("../crc32");
-const TsReader = require("../reader");
-const TsWriter = require("../writer");
+import * as TsCrc32 from "../crc32";
+import TsReader from "../reader";
+import TsWriter from "../writer";
 
 class TsTablePat {
     constructor(buffer) {
@@ -88,4 +88,4 @@ class TsTablePat {
     }
 }
 
-module.exports = TsTablePat;
+export default TsTablePat;

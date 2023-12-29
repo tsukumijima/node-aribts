@@ -1,6 +1,6 @@
 import { Buffer } from "buffer";
-import TsReader = require("./reader");
-import TsWriter = require("./writer");
+import TsReader from "./reader";
+import TsWriter from "./writer";
 
 interface Packet {
     _raw: Buffer;
@@ -294,4 +294,4 @@ class TsPacket {
     }
 }
 
-export = TsPacket;
+export default TsPacket;

@@ -1,7 +1,7 @@
 import { Buffer } from "buffer";
 import { calc } from "../crc32";
-import TsReader = require("../reader");
-import TsDescriptors = require("../descriptors");
+import TsReader from "../reader";
+import TsDescriptors from "../descriptors";
 
 export interface EIT {
     _raw: Buffer;

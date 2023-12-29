@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorParentalRating {
     constructor(buffer) {
@@ -31,4 +31,4 @@ class TsDescriptorParentalRating {
     }
 }
 
-module.exports = TsDescriptorParentalRating;
+export default TsDescriptorParentalRating;

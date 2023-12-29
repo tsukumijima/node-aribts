@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDataModuleKeywordTable {
     constructor(buffer) {
@@ -27,4 +27,4 @@ class TsDataModuleKeywordTable {
     }
 }
 
-module.exports = TsDataModuleKeywordTable;
+export default TsDataModuleKeywordTable;

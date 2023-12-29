@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorCableMulticarrierTransmissionDeliverySystem {
     constructor(buffer) {
@@ -29,4 +29,4 @@ class TsDescriptorCableMulticarrierTransmissionDeliverySystem {
     }
 }
 
-module.exports = TsDescriptorCableMulticarrierTransmissionDeliverySystem;
+export default TsDescriptorCableMulticarrierTransmissionDeliverySystem;

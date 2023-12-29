@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorPartialTransportStream {
     constructor(buffer) {
@@ -27,4 +27,4 @@ class TsDescriptorPartialTransportStream {
     }
 }
 
-module.exports = TsDescriptorPartialTransportStream;
+export default TsDescriptorPartialTransportStream;

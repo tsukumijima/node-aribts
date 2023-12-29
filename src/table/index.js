@@ -1,17 +1,33 @@
-module.exports = {
-    TsTablePat: require("./pat"),
-    TsTableCat: require("./cat"),
-    TsTablePmt: require("./pmt"),
-    TsTableNit: require("./nit"),
-    TsTableDsmcc: require("./dsmcc"),
-    TsTableSdt: require("./sdt"),
-    TsTableBat: require("./bat"),
-    TsTableEit: require("./eit"),
-    TsTableTdt: require("./tdt"),
-    TsTableTot: require("./tot"),
-    TsTableDit: require("./dit"),
-    TsTableSit: require("./sit"),
-    TsTableSdtt: require("./sdtt"),
-    TsTableCdt: require("./cdt"),
-    TsTableBit: require("./bit"),
+import TsTablePat from "./pat";
+import TsTableCat from "./cat";
+import TsTablePmt from "./pmt";
+import TsTableNit from "./nit";
+import TsTableDsmcc from "./dsmcc";
+import TsTableSdt from "./sdt";
+import TsTableBat from "./bat";
+import * as TsTableEit from "./eit";
+import TsTableTdt from "./tdt";
+import TsTableTot from "./tot";
+import TsTableDit from "./dit";
+import TsTableSit from "./sit";
+import TsTableSdtt from "./sdtt";
+import TsTableCdt from "./cdt";
+import * as TsTableBit from "./bit";
+
+export {
+    TsTablePat,
+    TsTableCat,
+    TsTablePmt,
+    TsTableNit,
+    TsTableDsmcc,
+    TsTableSdt,
+    TsTableBat,
+    TsTableEit,
+    TsTableTdt,
+    TsTableTot,
+    TsTableDit,
+    TsTableSit,
+    TsTableSdtt,
+    TsTableCdt,
+    TsTableBit,
 };

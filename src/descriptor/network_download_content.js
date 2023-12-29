@@ -1,7 +1,7 @@
 "use strict";
 
-const TsReader = require("../reader");
-const TsDescriptorCompatibility = require("./compatibility");
+import TsReader from "../reader";
+import TsDescriptorCompatibility from "./compatibility";
 
 class TsDescriptorNetworkDownloadContent {
     constructor(buffer) {
@@ -62,4 +62,4 @@ class TsDescriptorNetworkDownloadContent {
     }
 }
 
-module.exports = TsDescriptorNetworkDownloadContent;
+export default TsDescriptorNetworkDownloadContent;

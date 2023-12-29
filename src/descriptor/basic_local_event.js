@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorBasicLocalEvent {
     constructor(buffer) {
@@ -55,4 +55,4 @@ class TsDescriptorBasicLocalEvent {
     }
 }
 
-module.exports = TsDescriptorBasicLocalEvent;
+export default TsDescriptorBasicLocalEvent;

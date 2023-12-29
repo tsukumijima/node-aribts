@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorAudioStream {
     constructor(buffer) {
@@ -26,4 +26,4 @@ class TsDescriptorAudioStream {
     }
 }
 
-module.exports = TsDescriptorAudioStream;
+export default TsDescriptorAudioStream;

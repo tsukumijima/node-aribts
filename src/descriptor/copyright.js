@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorCopyright {
     constructor(buffer) {
@@ -23,4 +23,4 @@ class TsDescriptorCopyright {
     }
 }
 
-module.exports = TsDescriptorCopyright;
+export default TsDescriptorCopyright;

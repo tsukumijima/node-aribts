@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorTerrestrialDeliverySystem {
     constructor(buffer) {
@@ -33,4 +33,4 @@ class TsDescriptorTerrestrialDeliverySystem {
     }
 }
 
-module.exports = TsDescriptorTerrestrialDeliverySystem;
+export default TsDescriptorTerrestrialDeliverySystem;

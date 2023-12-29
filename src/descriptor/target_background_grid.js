@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorTargetBackgroundGrid {
     constructor(buffer) {
@@ -24,4 +24,4 @@ class TsDescriptorTargetBackgroundGrid {
     }
 }
 
-module.exports = TsDescriptorTargetBackgroundGrid;
+export default TsDescriptorTargetBackgroundGrid;

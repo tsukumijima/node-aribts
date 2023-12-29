@@ -1,4 +1,4 @@
-const logoClut = [
+export default [
     [0  , 0  , 0  , 255],
     [255, 0  , 0  , 255],
     [0  , 255, 0  , 255],
@@ -129,5 +129,3 @@ const logoClut = [
     [255, 255, 85 , 128],
     [255, 255, 255, 128]
 ];
-
-export = logoClut;

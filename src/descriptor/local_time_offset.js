@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorLocalTimeOffset {
     constructor(buffer) {
@@ -36,4 +36,4 @@ class TsDescriptorLocalTimeOffset {
     }
 }
 
-module.exports = TsDescriptorLocalTimeOffset;
+export default TsDescriptorLocalTimeOffset;

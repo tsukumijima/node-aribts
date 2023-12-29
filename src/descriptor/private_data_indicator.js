@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorPrivateDataIndicator {
     constructor(buffer) {
@@ -22,4 +22,4 @@ class TsDescriptorPrivateDataIndicator {
     }
 }
 
-module.exports = TsDescriptorPrivateDataIndicator;
+export default TsDescriptorPrivateDataIndicator;

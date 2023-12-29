@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDataModuleLogo {
     constructor(buffer) {
@@ -43,4 +43,4 @@ class TsDataModuleLogo {
     }
 }
 
-module.exports = TsDataModuleLogo;
+export default TsDataModuleLogo;

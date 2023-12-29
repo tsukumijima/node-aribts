@@ -1,7 +1,7 @@
 import { Buffer } from "buffer";
-const TsChar = require("./char");
-const TsDate = require("./date");
-const epgTable = require("./epg_table");
+import TsChar from "./char";
+import TsDate from "./date";
+import epgTable from "./epg_table";
 
 class TsEpg {
     constructor() {
@@ -551,4 +551,4 @@ class TsEpg {
     }
 }
 
-module.exports = TsEpg;
+export default TsEpg;

@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDataModuleCommonTable {
     constructor(buffer) {
@@ -30,4 +30,4 @@ class TsDataModuleCommonTable {
     }
 }
 
-module.exports = TsDataModuleCommonTable;
+export default TsDataModuleCommonTable;

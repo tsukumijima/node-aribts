@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorEventGroup {
     constructor(buffer) {
@@ -50,4 +50,4 @@ class TsDescriptorEventGroup {
     }
 }
 
-module.exports = TsDescriptorEventGroup;
+export default TsDescriptorEventGroup;

@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorTargetRegion {
     constructor(buffer) {
@@ -27,4 +27,4 @@ class TsDescriptorTargetRegion {
     }
 }
 
-module.exports = TsDescriptorTargetRegion;
+export default TsDescriptorTargetRegion;

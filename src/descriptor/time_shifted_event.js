@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorTimeShiftedEvent {
     constructor(buffer) {
@@ -23,4 +23,4 @@ class TsDescriptorTimeShiftedEvent {
     }
 }
 
-module.exports = TsDescriptorTimeShiftedEvent;
+export default TsDescriptorTimeShiftedEvent;

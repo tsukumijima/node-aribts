@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorDataStreamAlignment {
     constructor(buffer) {
@@ -22,4 +22,4 @@ class TsDescriptorDataStreamAlignment {
     }
 }
 
-module.exports = TsDescriptorDataStreamAlignment;
+export default TsDescriptorDataStreamAlignment;

@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorScrambleSystem {
     constructor(buffer) {
@@ -22,4 +22,4 @@ class TsDescriptorScrambleSystem {
     }
 }
 
-module.exports = TsDescriptorScrambleSystem;
+export default TsDescriptorScrambleSystem;

@@ -1,9 +1,9 @@
 "use strict";
 
-const TsCrc32 = require("../crc32");
-const TsReader = require("../reader");
-const TsDescriptorCompatibility = require("../descriptor/compatibility");
-const TsModuleDescriptors = require("../module_descriptors");
+import * as TsCrc32 from "../crc32";
+import TsReader from "../reader";
+import TsDescriptorCompatibility from "../descriptor/compatibility";
+import TsModuleDescriptors from "../module_descriptors";
 
 class TsDsmccMessageDownloadInfoIndication {
     constructor(buffer) {
@@ -137,4 +137,4 @@ class TsTableDsmcc {
     }
 }
 
-module.exports = TsTableDsmcc;
+export default TsTableDsmcc;

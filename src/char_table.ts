@@ -1,4 +1,4 @@
-const charTable = {
+export default {
     ascii: {
         0x21: [0x81, 0x49],
         0x22: [0x81, 0x68],
@@ -1253,5 +1253,3 @@ const charTable = {
         0x764B: "\u{00009EB5}",
     },
 };
-
-export = charTable;

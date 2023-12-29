@@ -100,4 +100,4 @@ class TsReader {
     }
 }
 
-export = TsReader;
+export default TsReader;

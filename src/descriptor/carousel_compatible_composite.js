@@ -1,7 +1,7 @@
 "use strict";
 
-const TsReader = require("../reader");
-const TsModuleDescriptors = require("../module_descriptors");
+import TsReader from "../reader";
+import TsModuleDescriptors from "../module_descriptors";
 
 class TsDescriptorCarouselCompatibleComposite {
     constructor(buffer) {
@@ -23,4 +23,4 @@ class TsDescriptorCarouselCompatibleComposite {
     }
 }
 
-module.exports = TsDescriptorCarouselCompatibleComposite;
+export default TsDescriptorCarouselCompatibleComposite;

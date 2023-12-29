@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     component: {
         0x01: {
             0x01: "映像480i(525i)、アスペクト比4:3",

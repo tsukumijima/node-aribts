@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorServiceGroup {
     constructor(buffer) {
@@ -38,4 +38,4 @@ class TsDescriptorServiceGroup {
     }
 }
 
-module.exports = TsDescriptorServiceGroup;
+export default TsDescriptorServiceGroup;

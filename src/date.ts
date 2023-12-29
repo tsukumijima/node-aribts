@@ -58,4 +58,4 @@ class TsDate {
 
 }
 
-export = TsDate;
+export default TsDate;

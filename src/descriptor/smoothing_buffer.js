@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorSmoothingBuffer {
     constructor(buffer) {
@@ -25,4 +25,4 @@ class TsDescriptorSmoothingBuffer {
     }
 }
 
-module.exports = TsDescriptorSmoothingBuffer;
+export default TsDescriptorSmoothingBuffer;

@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorHyperlink {
     constructor(buffer) {
@@ -26,4 +26,4 @@ class TsDescriptorHyperlink {
     }
 }
 
-module.exports = TsDescriptorHyperlink;
+export default TsDescriptorHyperlink;

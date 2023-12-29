@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorConditionalAccess {
     constructor(buffer) {
@@ -25,4 +25,4 @@ class TsDescriptorConditionalAccess {
     }
 }
 
-module.exports = TsDescriptorConditionalAccess;
+export default TsDescriptorConditionalAccess;

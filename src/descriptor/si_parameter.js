@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 function decodeSINIT(buffer) {
     let reader = new TsReader(buffer);
@@ -142,4 +142,4 @@ class TsDescriptorSiParameter {
     }
 }
 
-module.exports = TsDescriptorSiParameter;
+export default TsDescriptorSiParameter;

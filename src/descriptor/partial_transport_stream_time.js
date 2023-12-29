@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorPartialTransportStreamTime {
     constructor(buffer) {
@@ -33,4 +33,4 @@ class TsDescriptorPartialTransportStreamTime {
     }
 }
 
-module.exports = TsDescriptorPartialTransportStreamTime;
+export default TsDescriptorPartialTransportStreamTime;

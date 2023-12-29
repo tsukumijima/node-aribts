@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorConditionalPlayback {
     constructor(buffer) {
@@ -24,4 +24,4 @@ class TsDescriptorConditionalPlayback {
     }
 }
 
-module.exports = TsDescriptorConditionalPlayback;
+export default TsDescriptorConditionalPlayback;

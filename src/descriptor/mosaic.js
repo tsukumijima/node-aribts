@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorMosaic {
     constructor(buffer) {
@@ -74,4 +74,4 @@ class TsDescriptorMosaic {
     }
 }
 
-module.exports = TsDescriptorMosaic;
+export default TsDescriptorMosaic;

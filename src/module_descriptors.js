@@ -1,4 +1,4 @@
-const tsModuleDescriptor = require("./module_descriptor");
+import * as tsModuleDescriptor from "./module_descriptor";
 
 class TsModuleDescriptors {
     constructor(buffer) {
@@ -61,4 +61,4 @@ class TsModuleDescriptors {
     }
 }
 
-module.exports = TsModuleDescriptors;
+export default TsModuleDescriptors;

@@ -1,9 +1,9 @@
 import { Buffer } from "buffer";
-const TsChar = require("./char");
-const TsDate = require("./date");
-const TsEpg = require("./epg");
-const TsLogo = require("./logo");
-const tsDataModule = require("./data_module");
+import TsChar from "./char";
+import TsDate from "./date";
+import TsEpg from "./epg";
+import TsLogo from "./logo";
+import * as tsDataModule from "./data_module";
 
 function checkNestedObject(obj, keys) {
     return keys.every(key => {
@@ -773,4 +773,4 @@ class TsUtil {
     }
 }
 
-module.exports = TsUtil;
+export default TsUtil;

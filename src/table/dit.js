@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsTableDit {
     constructor(buffer) {
@@ -25,4 +25,4 @@ class TsTableDit {
     }
 }
 
-module.exports = TsTableDit;
+export default TsTableDit;

@@ -1,6 +1,6 @@
 import { Buffer } from "buffer";
 import { decode } from "iconv-lite";
-import charTable = require("./char_table");
+import charTable from "./char_table";
 
 const charCode = {
     hiragana: 0x30,
@@ -477,5 +477,5 @@ class TsChar {
     }
 }
 
-export = TsChar;
+export default TsChar;
 

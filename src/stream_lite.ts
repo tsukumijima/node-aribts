@@ -1,7 +1,7 @@
 import { Buffer } from "buffer";
 import { EventEmitter } from "events";
 import { TsInfo } from "./info";
-import TsPacket = require("./packet");
+import TsPacket from "./packet";
 import {
     TsTablePat,
     TsTableCat,
@@ -337,4 +337,4 @@ class TsStreamLite extends EventEmitter {
     }
 }
 
-export = TsStreamLite;
+export default TsStreamLite;

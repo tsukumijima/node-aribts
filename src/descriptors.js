@@ -1,6 +1,6 @@
 "use strict";
 
-const tsDescriptor = require("./descriptor");
+import * as tsDescriptor from "./descriptor";
 
 class TsDescriptors {
     constructor(buffer) {
@@ -577,4 +577,4 @@ class TsDescriptors {
     }
 }
 
-module.exports = TsDescriptors;
+export default TsDescriptors;

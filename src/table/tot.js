@@ -1,8 +1,8 @@
 "use strict";
 
-const TsCrc32 = require("../crc32");
-const TsReader = require("../reader");
-const TsDescriptors = require("../descriptors");
+import * as TsCrc32 from "../crc32";
+import TsReader from "../reader";
+import TsDescriptors from "../descriptors";
 
 class TsTableTot {
     constructor(buffer) {
@@ -34,4 +34,4 @@ class TsTableTot {
     }
 }
 
-module.exports = TsTableTot;
+export default TsTableTot;

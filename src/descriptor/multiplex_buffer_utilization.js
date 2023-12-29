@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorMultiplexBufferUtilization {
     constructor(buffer) {
@@ -25,4 +25,4 @@ class TsDescriptorMultiplexBufferUtilization {
     }
 }
 
-module.exports = TsDescriptorMultiplexBufferUtilization;
+export default TsDescriptorMultiplexBufferUtilization;

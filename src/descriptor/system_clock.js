@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorSystemClock {
     constructor(buffer) {
@@ -26,4 +26,4 @@ class TsDescriptorSystemClock {
     }
 }
 
-module.exports = TsDescriptorSystemClock;
+export default TsDescriptorSystemClock;

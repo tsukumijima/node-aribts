@@ -1,9 +1,25 @@
 import { Buffer } from "buffer";
-const { Transform } = require("stream");
-const { TsInfo } = require("./info");
-const { TsBuffer } = require("./buffer");
-const TsPacket = require("./packet");
-const tsTable = require("./table");
+import { Transform } from "stream";
+import { TsInfo } from "./info";
+import { TsBuffer } from "./buffer";
+import TsPacket from "./packet";
+import {
+    TsTablePat,
+    TsTableCat,
+    TsTablePmt,
+    TsTableDsmcc,
+    TsTableNit,
+    TsTableSdt,
+    TsTableBat,
+    TsTableTdt,
+    TsTableTot,
+    TsTableDit,
+    TsTableSit,
+    TsTableSdtt,
+    TsTableCdt,
+} from "./table";
+import { decode as decodeEIT } from "./table/eit";
+import { decode as decodeBIT } from "./table/bit";
 
 class TsStream extends Transform {
     constructor(options = {}) {
@@ -239,7 +255,7 @@ class TsStream extends Transform {
                         if (tableId === 0x00) {
                             // PAT
                             if (this.listenerCount("pat") || this.options.transform) {
-                                let objPat = new tsTable.TsTablePat(section).decode();
+                                let objPat = new TsTablePat(section).decode();
 
                                 if (objPat !== null) {
                                     if (this.listenerCount("pat")) {
@@ -256,7 +272,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0x01) {
                             // CAT
                             if (this.listenerCount("cat") || this.options.transform) {
-                                let objCat = new tsTable.TsTableCat(section).decode();
+                                let objCat = new TsTableCat(section).decode();
 
                                 if (objCat !== null) {
                                     if (this.listenerCount("cat")) {
@@ -271,7 +287,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0x02) {
                             // PMT
                             if (this.listenerCount("pmt") || this.options.transform) {
-                                let objPmt = new tsTable.TsTablePmt(section).decode();
+                                let objPmt = new TsTablePmt(section).decode();
 
                                 if (objPmt !== null) {
                                     if (this.listenerCount("pmt")) {
@@ -286,7 +302,7 @@ class TsStream extends Transform {
                         } else if (tableId >= 0x3A && tableId <= 0x3F) {
                             // DSM-CC
                             if (this.listenerCount("dsmcc")) {
-                                let objDsmcc = new tsTable.TsTableDsmcc(section).decode();
+                                let objDsmcc = new TsTableDsmcc(section).decode();
 
                                 if (objDsmcc !== null) {
                                     this.emit("dsmcc", objBasic.PID, objDsmcc);
@@ -295,7 +311,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0x40 || tableId === 0x41) {
                             // NIT
                             if (this.listenerCount("nit")) {
-                                let objNit = new tsTable.TsTableNit(section).decode();
+                                let objNit = new TsTableNit(section).decode();
 
                                 if (objNit !== null) {
                                     this.emit("nit", objBasic.PID, objNit);
@@ -304,7 +320,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0x42 || tableId === 0x46) {
                             // SDT
                             if (this.listenerCount("sdt")) {
-                                let objSdt = new tsTable.TsTableSdt(section).decode();
+                                let objSdt = new TsTableSdt(section).decode();
 
                                 if (objSdt !== null) {
                                     this.emit("sdt", objBasic.PID, objSdt);
@@ -313,7 +329,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0x4A) {
                             // BAT
                             if (this.listenerCount("bat")) {
-                                let objBat = new tsTable.TsTableBat(section).decode();
+                                let objBat = new TsTableBat(section).decode();
 
                                 if (objBat !== null) {
                                     this.emit("bat", objBasic.PID, objBat);
@@ -322,7 +338,7 @@ class TsStream extends Transform {
                         } else if (tableId >= 0x4E && tableId <= 0x6F) {
                             // EIT
                             if (this.listenerCount("eit")) {
-                                let objEit = new tsTable.TsTableEit.decode(section);
+                                let objEit = decodeEIT(section);
 
                                 if (objEit !== null) {
                                     this.emit("eit", objBasic.PID, objEit);
@@ -331,7 +347,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0x70) {
                             // TDT
                             if (this.listenerCount("tdt")) {
-                                let objTdt = new tsTable.TsTableTdt(section).decode();
+                                let objTdt = new TsTableTdt(section).decode();
 
                                 if (objTdt !== null) {
                                     this.emit("tdt", objBasic.PID, objTdt);
@@ -340,7 +356,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0x73) {
                             // TOT
                             if (this.listenerCount("tot")) {
-                                let objTot = new tsTable.TsTableTot(section).decode();
+                                let objTot = new TsTableTot(section).decode();
 
                                 if (objTot !== null) {
                                     this.emit("tot", objBasic.PID, objTot);
@@ -349,7 +365,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0x7E) {
                             // DIT
                             if (this.listenerCount("dit")) {
-                                let objDit = new tsTable.TsTableDit(section).decode();
+                                let objDit = new TsTableDit(section).decode();
 
                                 if (objDit !== null) {
                                     this.emit("dit", objBasic.PID, objDit);
@@ -358,7 +374,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0x7F) {
                             // SIT
                             if (this.listenerCount("sit")) {
-                                let objSit = new tsTable.TsTableSit(section).decode();
+                                let objSit = new TsTableSit(section).decode();
 
                                 if (objSit !== null) {
                                     this.emit("sit", objBasic.PID, objSit);
@@ -367,7 +383,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0xC3) {
                             // SDTT
                             if (this.listenerCount("sdtt")) {
-                                let objSdtt = new tsTable.TsTableSdtt(section).decode();
+                                let objSdtt = new TsTableSdtt(section).decode();
 
                                 if (objSdtt !== null) {
                                     this.emit("sdtt", objBasic.PID, objSdtt);
@@ -376,7 +392,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0xC4) {
                             // BIT
                             if (this.listenerCount("bit")) {
-                                let objBit = new tsTable.TsTableBit.decode(section);
+                                let objBit = decodeBIT(section);
 
                                 if (objBit !== null) {
                                     this.emit("bit", objBasic.PID, objBit);
@@ -385,7 +401,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0xC8) {
                             // CDT
                             if (this.listenerCount("cdt")) {
-                                let objCdt = new tsTable.TsTableCdt(section).decode();
+                                let objCdt = new TsTableCdt(section).decode();
 
                                 if (objCdt !== null) {
                                     this.emit("cdt", objBasic.PID, objCdt);
@@ -561,7 +577,7 @@ class TsStream extends Transform {
             }
         }
 
-        let bufferPat = new tsTable.TsTablePat(Buffer.alloc(0x400, 0xFF)).encode(objPat);
+        let bufferPat = new TsTablePat(Buffer.alloc(0x400, 0xFF)).encode(objPat);
 
         if (bufferPat.length > 183) {
             throw new RangeError("PAT is too long");
@@ -626,4 +642,4 @@ class TsStream extends Transform {
     }
 }
 
-module.exports = TsStream;
+export default TsStream;

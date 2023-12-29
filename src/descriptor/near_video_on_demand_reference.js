@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorNearVideoOnDemandReference {
     constructor(buffer) {
@@ -32,4 +32,4 @@ class TsDescriptorNearVideoOnDemandReference {
     }
 }
 
-module.exports = TsDescriptorNearVideoOnDemandReference;
+export default TsDescriptorNearVideoOnDemandReference;

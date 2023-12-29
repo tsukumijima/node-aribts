@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorIso639Language {
     constructor(buffer) {
@@ -31,4 +31,4 @@ class TsDescriptorIso639Language {
     }
 }
 
-module.exports = TsDescriptorIso639Language;
+export default TsDescriptorIso639Language;

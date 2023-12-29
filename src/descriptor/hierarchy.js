@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorHierarchy {
     constructor(buffer) {
@@ -33,4 +33,4 @@ class TsDescriptorHierarchy {
     }
 }
 
-module.exports = TsDescriptorHierarchy;
+export default TsDescriptorHierarchy;

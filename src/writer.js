@@ -59,4 +59,4 @@ class TsWriter {
     }
 }
 
-module.exports = TsWriter;
+export default TsWriter;

@@ -1,6 +1,6 @@
 "use strict";
 
-const TsReader = require("../reader");
+import TsReader from "../reader";
 
 class TsDescriptorVideoWindow {
     constructor(buffer) {
@@ -24,4 +24,4 @@ class TsDescriptorVideoWindow {
     }
 }
 
-module.exports = TsDescriptorVideoWindow;
+export default TsDescriptorVideoWindow;
