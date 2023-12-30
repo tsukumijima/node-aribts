@@ -18,14 +18,14 @@ export interface BIT {
     broadcast_view_propriety: number;
     first_descriptors_length: number;
     last_table_id: number;
-    first_descriptors: any[];
+    first_descriptors: { [key: string]: any }[];
     broadcaster_descriptors: BroadcasterDescriptor[];
     CRC_32: Buffer;
 }
 
 export interface BroadcasterDescriptor {
     broadcaster_id: number;
-    descriptors: any[];
+    descriptors: { [key: string]: any }[];
 }
 
 export function decode(buffer: Buffer): BIT {

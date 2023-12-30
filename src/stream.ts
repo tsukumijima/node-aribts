@@ -35,18 +35,18 @@ class TsStream extends Transform {
         transPids: number[];
     };
     trans: {
-        pat: any;
-        cat: any;
-        pmt: any;
+        pat: { [key: string]: any };
+        cat: { [key: string]: any };
+        pmt: { [key: string]: any };
         pmtPids: number[];
         pids: number[];
         rebuild: {
-            pat: any;
+            pat: Buffer;
             patCounter: number;
             patVersion: number;
         };
     };
-    constructor(options = {}) {
+    constructor(options: Partial<typeof TsStream.prototype.options> = {}) {
         super();
 
         this.options = Object.assign({
@@ -78,8 +78,8 @@ class TsStream extends Transform {
         };
     }
 
-    toPacket(buffer) {
-        let packets = [];
+    toPacket(buffer: Buffer): { packets: Buffer[], buffer: Buffer | null } {
+        let packets: Buffer[] = [];
         let i = 0;
 
         // Find sync_byte
@@ -104,7 +104,7 @@ class TsStream extends Transform {
         };
     }
 
-    parse(buffer) {
+    parse(buffer: Buffer): Buffer | null {
         // Convert buffer into packet
         let result = this.toPacket(buffer);
 
@@ -135,7 +135,7 @@ class TsStream extends Transform {
 
             // Exists data
             if ((objBasic.adaptation_field_control & 0x01) === 1) {
-                let sections = [];
+                let sections: Buffer[] = [];
 
                 // Check discontinuity_indicator
                 if (objBasic.hasOwnProperty("adaptation_field") &&
@@ -449,7 +449,7 @@ class TsStream extends Transform {
         return result.buffer;
     }
 
-    parsePat(pid, objPat) {
+    parsePat(pid: number, objPat: { [key: string]: any }) {
         if (this.trans.pat !== null && objPat.version_number === this.trans.pat.version_number) return;
 
         this.trans.pat = objPat;
@@ -462,7 +462,7 @@ class TsStream extends Transform {
         this.rebuildPat();
     }
 
-    parseCat(pid, objCat) {
+    parseCat(pid: number, objCat: { [key: string]: any }) {
         if (this.trans.cat !== null && objCat.version_number === this.trans.cat.version_number) return;
 
         this.trans.cat = objCat;
@@ -474,7 +474,7 @@ class TsStream extends Transform {
         this.updatePids();
     }
 
-    parsePmt(pid, objPmt) {
+    parsePmt(pid: number, objPmt: { [key: string]: any }) {
         if (this.trans.pmt.hasOwnProperty(pid) && objPmt.version_number === this.trans.pmt[pid].version_number) return;
 
         this.trans.pmt[pid] = objPmt;
@@ -487,8 +487,8 @@ class TsStream extends Transform {
     }
 
     updatePids() {
-        let pmtPids = this.options.transPmtPids.slice();
-        let pids = this.options.transPids.slice();
+        let pmtPids: number[] = this.options.transPmtPids.slice();
+        let pids: number[] = this.options.transPids.slice();
 
         // Add PAT PID
         pids.push(0x0000);
@@ -613,7 +613,7 @@ class TsStream extends Transform {
         this.trans.rebuild.patVersion = (this.trans.rebuild.patVersion + 1) & 0x1F;
     }
 
-    createPat() {
+    createPat(): Buffer {
         let bufferPacket = Buffer.from(this.trans.rebuild.pat);
 
         // Update continuity_counter
@@ -623,7 +623,7 @@ class TsStream extends Transform {
         return bufferPacket;
     }
 
-    _transform(chunk, encoding, callback) {
+    _transform(chunk: any, encoding: string, callback: Function) {
         // Add chunk to buffer
         this.buffer.add(chunk);
 
@@ -641,7 +641,7 @@ class TsStream extends Transform {
         callback();
     }
 
-    _flush(callback) {
+    _flush(callback: Function) {
         // Parse buffer
         let buffer = this.parse(this.buffer.concat());
 

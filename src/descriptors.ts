@@ -7,8 +7,8 @@ class TsDescriptors {
         this.buffer = buffer;
     }
 
-    decode() {
-        let arrDescriptors = [];
+    decode(): { [key: string]: any }[] {
+        let arrDescriptors: { [key: string]: any }[] = [];
 
         for (let bytesRead = 0; bytesRead < this.buffer.length; ) {
             let objDescriptor;

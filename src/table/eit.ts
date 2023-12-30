@@ -31,7 +31,7 @@ export interface Event {
     running_status: number;
     free_CA_mode: number;
     descriptors_loop_length: number;
-    descriptors: any;
+    descriptors: { [key: string]: any }[];
 }
 
 export function decode(buffer: Buffer): EIT {

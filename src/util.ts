@@ -5,7 +5,7 @@ import TsEpg from "./epg";
 import TsLogo from "./logo";
 import * as tsDataModule from "./data_module";
 
-function checkNestedObject(obj, keys) {
+function checkNestedObject(obj: Map<any, any>, keys: any[]): boolean {
     return keys.every(key => {
         if (!obj.has(key)) return false;
 
@@ -15,7 +15,7 @@ function checkNestedObject(obj, keys) {
     });
 }
 
-function getNestedObject(obj, keys) {
+function getNestedObject(obj: Map<any, any>, keys: any[]): { [key: string]: any } {
     keys.forEach((key, i) => {
         if (!obj.has(key)) {
             obj.set(key, i === keys.length - 1 ? {} : new Map());
@@ -27,7 +27,7 @@ function getNestedObject(obj, keys) {
     return obj;
 }
 
-function removeNestedObject(obj, keys) {
+function removeNestedObject(obj: Map<any, any>, keys: any[]): boolean {
     return keys.every((key, i) => {
         if (!obj.has(key)) return false;
 
@@ -41,7 +41,7 @@ function removeNestedObject(obj, keys) {
     });
 }
 
-function updateSubTable(subTable, objTable) {
+function updateSubTable(subTable: { [key: string]: any }, objTable: { [key: string]: any }): boolean {
     if (Object.keys(subTable).length === 0 || objTable.version_number !== subTable.version_number) {
         subTable.version_number = objTable.version_number;
         subTable.last_section_number = objTable.last_section_number;
@@ -53,7 +53,7 @@ function updateSubTable(subTable, objTable) {
     return false;
 }
 
-function updateSection(subTable, objTable) {
+function updateSection(subTable: { [key: string]: any }, objTable: { [key: string]: any }): boolean {
     if (subTable.sections.has(objTable.section_number)) {
         return false;
     }
@@ -63,7 +63,7 @@ function updateSection(subTable, objTable) {
     return true;
 }
 
-function checkSections(subTable) {
+function checkSections(subTable: { [key: string]: any }): boolean {
     return subTable.sections.size === subTable.last_section_number + 1;
 }
 
@@ -125,7 +125,7 @@ class TsUtil {
         };
     }
 
-    addPat(pid, objPat) {
+    addPat(pid: number, objPat: { [key: string]: any }): boolean {
         if (pid !== 0x00) return false;
         if (objPat.table_id !== 0x00) return false;
         if (objPat.current_next_indicator === 0) return false;
@@ -160,7 +160,7 @@ class TsUtil {
         return true;
     }
 
-    addCat(pid, objCat) {
+    addCat(pid: number, objCat: { [key: string]: any }): boolean {
         if (pid !== 0x01) return false;
         if (objCat.table_id !== 0x01) return false;
         if (objCat.current_next_indicator === 0) return false;
@@ -170,7 +170,7 @@ class TsUtil {
         return true;
     }
 
-    addPmt(pid, objPmt) {
+    addPmt(pid: number, objPmt: { [key: string]: any }): boolean {
         if (objPmt.table_id !== 0x02) return false;
         if (objPmt.current_next_indicator === 0) return false;
 
@@ -179,7 +179,7 @@ class TsUtil {
         return true;
     }
 
-    addDsmcc(pid, objDsmcc) {
+    addDsmcc(pid: number, objDsmcc: { [key: string]: any }): boolean {
         if (objDsmcc.table_id !== 0x3B && objDsmcc.table_id !== 0x3C) return false;
         if (objDsmcc.current_next_indicator === 0) return true;
 
@@ -351,7 +351,7 @@ class TsUtil {
         return true;
     }
 
-    addNit(pid, objNit) {
+    addNit(pid: number, objNit: { [key: string]: any }): boolean {
         if (pid !== 0x10) return false;
         if (objNit.table_id !== 0x40 && objNit.table_id !== 0x41) return false;
         if (objNit.current_next_indicator === 0) return false;
@@ -436,7 +436,7 @@ class TsUtil {
         return true;
     }
 
-    addSdt(pid, objSdt) {
+    addSdt(pid: number, objSdt: { [key: string]: any }): boolean {
         if (pid !== 0x11) return false;
         if (objSdt.table_id !== 0x42 && objSdt.table_id !== 0x46) return false;
         if (objSdt.current_next_indicator === 0) return false;
@@ -522,7 +522,7 @@ class TsUtil {
         return true;
     }
 
-    addBat(pid, objBat) {
+    addBat(pid: number, objBat: { [key: string]: any }): boolean {
         if (pid !== 0x11) return false;
         if (objBat.table_id !== 0x4A) return false;
         if (objBat.current_next_indicator === 0) return true;
@@ -532,11 +532,11 @@ class TsUtil {
         return true;
     }
 
-    addEit(pid, objEit) {
+    addEit(pid: number, objEit: { [key: string]: any }): boolean {
         return this.epg.addEit(pid, objEit, this.time);
     }
 
-    addTdt(pid, objTdt) {
+    addTdt(pid: number, objTdt: { [key: string]: any }): boolean {
         if (pid !== 0x14) return false;
         if (objTdt.table_id !== 0x70) return false;
 
@@ -545,7 +545,7 @@ class TsUtil {
         return true;
     }
 
-    addTot(pid, objTot) {
+    addTot(pid: number, objTot: { [key: string]: any }): boolean {
         if (pid !== 0x14) return false;
         if (objTot.table_id !== 0x73) return false;
 
@@ -554,7 +554,7 @@ class TsUtil {
         return true;
     }
 
-    addSdtt(pid, objSdtt) {
+    addSdtt(pid: number, objSdtt): boolean {
         if (pid !== 0x23 && pid !== 0x28) return false;
         if (objSdtt.table_id !== 0xC3) return false;
         if (objSdtt.table_id_ext >> 8 !== 0xFF) return false;
@@ -581,7 +581,7 @@ class TsUtil {
         return true;
     }
 
-    addCdt(pid, objCdt) {
+    addCdt(pid: number, objCdt: { [key: string]: any }): boolean {
         if (pid !== 0x29) return false;
         if (objCdt.table_id !== 0xC8) return false;
         if (objCdt.current_next_indicator === 0) return false;
@@ -630,7 +630,7 @@ class TsUtil {
         return true;
     }
 
-    hasTransportStreams(onid) {
+    hasTransportStreams(onid: number): boolean {
         onid = onid || this.original_network_id;
 
         if (!checkNestedObject(this.transport_streams, [onid])) return false;
@@ -642,7 +642,7 @@ class TsUtil {
         return true;
     }
 
-    hasServices(onid, tsid) {
+    hasServices(onid: number, tsid: number): boolean {
         onid = onid || this.original_network_id;
         tsid = tsid || this.transport_stream_id;
 
@@ -655,15 +655,15 @@ class TsUtil {
         return true;
     }
 
-    hasOriginalNetworkId() {
+    hasOriginalNetworkId(): boolean {
         return this.original_network_id !== -1;
     }
 
-    hasTransportStreamId() {
+    hasTransportStreamId(): boolean {
         return this.transport_stream_id !== -1;
     }
 
-    hasServiceIds() {
+    hasServiceIds(): boolean {
         if (this.service_ids === null) return false;
 
         let service_ids = this.service_ids;
@@ -673,27 +673,27 @@ class TsUtil {
         return true;
     }
 
-    hasPresent(onid, tsid, sid) {
+    hasPresent(onid: number, tsid: number, sid: number): boolean {
         return this.epg.hasPresent(onid, tsid, sid);
     }
 
-    hasFollowing(onid, tsid, sid) {
+    hasFollowing(onid: number, tsid: number, sid: number): boolean {
         return this.epg.hasFollowing(onid, tsid, sid);
     }
 
-    hasSchedule() {
+    hasSchedule(): boolean {
         return this.epg.hasSchedule();
     }
 
-    hasTime() {
+    hasTime(): boolean {
         return this.time !== null;
     }
 
-    hasLogoId(onid, tsid, sid) {
+    hasLogoId(onid: number, tsid: number, sid: number): boolean {
         return checkNestedObject(this.logo_id_refs, [onid, tsid, sid]);
     }
 
-    hasLogo(logo_id, onid) {
+    hasLogo(logo_id: number, onid: number): boolean {
         if (!checkNestedObject(this.logo_ids, [onid, logo_id])) return false;
 
         let logos = getNestedObject(this.logo_ids, [onid, logo_id]);
@@ -703,7 +703,7 @@ class TsUtil {
         return true;
     }
 
-    getTransportStreams(onid) {
+    getTransportStreams(onid: number): { [key: string]: any } {
         onid = onid || this.original_network_id;
 
         if (!checkNestedObject(this.transport_streams, [onid])) return null;
@@ -719,7 +719,7 @@ class TsUtil {
         return obj;
     }
 
-    getServices(onid, tsid) {
+    getServices(onid: number, tsid: number): { [key: string]: any } {
         onid = onid || this.original_network_id;
         tsid = tsid || this.transport_stream_id;
 
@@ -736,43 +736,43 @@ class TsUtil {
         return obj;
     }
 
-    getOriginalNetworkId() {
+    getOriginalNetworkId(): number {
         return this.original_network_id;
     }
 
-    getTransportStreamId() {
+    getTransportStreamId(): number {
         return this.transport_stream_id;
     }
 
-    getServiceIds() {
+    getServiceIds(): number[] {
         if (this.service_ids === null) return null;
 
         return Array.from(this.service_ids.content);
     }
 
-    getPresent(onid, tsid, sid) {
+    getPresent(onid: number, tsid: number, sid: number): { [key: string]: any } {
         return this.epg.getPresent(onid, tsid, sid);
     }
 
-    getFollowing(onid, tsid, sid) {
+    getFollowing(onid: number, tsid: number, sid: number): { [key: string]: any } {
         return this.epg.getFollowing(onid, tsid, sid);
     }
 
-    getSchedule() {
+    getSchedule(): { [key: string]: any } {
         return this.epg.getSchedule();
     }
 
-    getScheduleAmount() {
+    getScheduleAmount(): number[] {
         return this.epg.getScheduleAmount();
     }
 
-    getTime() {
+    getTime(): Date {
         if (this.time === null) return null;
 
         return new Date(this.time.getTime());
     }
 
-    getLogoId(onid, tsid, sid) {
+    getLogoId(onid: number, tsid: number, sid: number): number {
         if (!checkNestedObject(this.logo_id_refs, [onid, tsid, sid])) return null;
 
         let logo_id_ref = getNestedObject(this.logo_id_refs, [onid, tsid, sid]);
@@ -780,7 +780,7 @@ class TsUtil {
         return logo_id_ref.logo_id;
     }
 
-    getLogo(logo_id, onid) {
+    getLogo(logo_id: number, onid: number): { [key: string]: any } {
         if (!checkNestedObject(this.logo_ids, [onid, logo_id])) return null;
 
         let logos = getNestedObject(this.logo_ids, [onid, logo_id]);

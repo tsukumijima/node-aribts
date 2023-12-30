@@ -3,35 +3,34 @@ import TsChar from "./char";
 import TsDate from "./date";
 import epgTable from "./epg_table";
 
+interface Flag {
+    flag: Buffer;
+    ignore: Buffer;
+    version_number: number;
+}
+
+interface Flags {
+    flags: Flag[];
+    last_flags_id: number;
+}
+
+interface Event {
+    pf: {
+        present: { [key: string]: any };
+        following: { [key: string]: any };
+    };
+    schedule: { [key: string]: any };
+    basic_flags: Flags;
+    extended_flags: Flags;
+}
+
 class TsEpg {
-    epg: Map<number, Map<number, Map<number, {
-        pf: {
-            present: any;
-            following: any;
-        };
-        schedule: any;
-        basic_flags: {
-            flags: {
-                flag: Buffer;
-                ignore: Buffer;
-                version_number: number;
-            }[];
-            last_flags_id: number;
-        };
-        extended_flags: {
-            flags: {
-                flag: Buffer;
-                ignore: Buffer;
-                version_number: number;
-            }[];
-            last_flags_id: number;
-        };
-    }>>>;
+    epg: Map<number, Map<number, Map<number, Event>>>;
     constructor() {
         this.epg = new Map();
     }
 
-    needUpdate(current, next) {
+    needUpdate(current: { [key: string]: any }, next: { [key: string]: any }): boolean {
         if (current === null) return true;
 
         if (current.table_id === 0x4E || current.table_id === 0x4F) {
@@ -47,7 +46,7 @@ class TsEpg {
         return true;
     }
 
-    addEit(pid, objEit, time) {
+    addEit(pid: number, objEit: { [key: string]: any }, time: Date): boolean {
         if (pid !== 0x12) return false;
         if (objEit.current_next_indicator === 0) return false;
 
@@ -438,7 +437,7 @@ class TsEpg {
         return true;
     }
 
-    hasPresent(onid, tsid, sid) {
+    hasPresent(onid: number, tsid: number, sid: number): boolean {
         let mapOriginalNetwork = this.epg;
 
         if (!mapOriginalNetwork.has(onid)) return false;
@@ -453,7 +452,7 @@ class TsEpg {
         return objService.pf.present !== null;
     }
 
-    hasFollowing(onid, tsid, sid) {
+    hasFollowing(onid: number, tsid: number, sid: number): boolean {
         let mapOriginalNetwork = this.epg;
 
         if (!mapOriginalNetwork.has(onid)) return false;
@@ -468,7 +467,7 @@ class TsEpg {
         return objService.pf.following !== null;
     }
 
-    hasSchedule() {
+    hasSchedule(): boolean {
         let mapOriginalNetwork = this.epg;
 
         for (let mapTransportStream of mapOriginalNetwork.values()) {
@@ -490,7 +489,7 @@ class TsEpg {
         return true;
     }
 
-    getPresent(onid, tsid, sid) {
+    getPresent(onid: number, tsid: number, sid: number): { [key: string]: any } {
         let mapOriginalNetwork = this.epg;
 
         if (!mapOriginalNetwork.has(onid)) return {};
@@ -505,7 +504,7 @@ class TsEpg {
         return objService.pf.present;
     }
 
-    getFollowing(onid, tsid, sid) {
+    getFollowing(onid: number, tsid: number, sid: number): { [key: string]: any } {
         let mapOriginalNetwork = this.epg;
 
         if (!mapOriginalNetwork.has(onid)) return {};
@@ -520,7 +519,7 @@ class TsEpg {
         return objService.pf.following;
     }
 
-    getSchedule() {
+    getSchedule(): { [key: string]: any } {
         let objSchedule = {};
         let mapOriginalNetwork = this.epg;
 
@@ -548,7 +547,7 @@ class TsEpg {
         return objSchedule;
     }
 
-    getScheduleAmount() {
+    getScheduleAmount(): [number, number] {
         let overall = 0;
         let stored = 0;
         let mapOriginalNetwork = this.epg;
