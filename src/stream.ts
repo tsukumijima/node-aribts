@@ -1,5 +1,5 @@
 import { Buffer } from "buffer";
-import { Transform } from "stream-browserify";
+import { Transform } from "readable-stream";
 import { TsInfo } from "./info";
 import { TsBuffer } from "./buffer";
 import TsPacket from "./packet";
