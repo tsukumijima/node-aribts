@@ -38,40 +38,74 @@ declare class TsUtil {
     };
     constructor();
     reset(): void;
-    addPat(pid: any, objPat: any): boolean;
-    addCat(pid: any, objCat: any): boolean;
-    addPmt(pid: any, objPmt: any): boolean;
-    addDsmcc(pid: any, objDsmcc: any): boolean;
-    addNit(pid: any, objNit: any): boolean;
-    addSdt(pid: any, objSdt: any): boolean;
-    addBat(pid: any, objBat: any): boolean;
-    addEit(pid: any, objEit: any): boolean;
-    addTdt(pid: any, objTdt: any): boolean;
-    addTot(pid: any, objTot: any): boolean;
-    addSdtt(pid: any, objSdtt: any): boolean;
-    addCdt(pid: any, objCdt: any): boolean;
-    hasTransportStreams(onid: any): boolean;
-    hasServices(onid: any, tsid: any): boolean;
+    addPat(pid: number, objPat: {
+        [key: string]: any;
+    }): boolean;
+    addCat(pid: number, objCat: {
+        [key: string]: any;
+    }): boolean;
+    addPmt(pid: number, objPmt: {
+        [key: string]: any;
+    }): boolean;
+    addDsmcc(pid: number, objDsmcc: {
+        [key: string]: any;
+    }): boolean;
+    addNit(pid: number, objNit: {
+        [key: string]: any;
+    }): boolean;
+    addSdt(pid: number, objSdt: {
+        [key: string]: any;
+    }): boolean;
+    addBat(pid: number, objBat: {
+        [key: string]: any;
+    }): boolean;
+    addEit(pid: number, objEit: {
+        [key: string]: any;
+    }): boolean;
+    addTdt(pid: number, objTdt: {
+        [key: string]: any;
+    }): boolean;
+    addTot(pid: number, objTot: {
+        [key: string]: any;
+    }): boolean;
+    addSdtt(pid: number, objSdtt: any): boolean;
+    addCdt(pid: number, objCdt: {
+        [key: string]: any;
+    }): boolean;
+    hasTransportStreams(onid: number): boolean;
+    hasServices(onid: number, tsid: number): boolean;
     hasOriginalNetworkId(): boolean;
     hasTransportStreamId(): boolean;
     hasServiceIds(): boolean;
-    hasPresent(onid: any, tsid: any, sid: any): boolean;
-    hasFollowing(onid: any, tsid: any, sid: any): boolean;
+    hasPresent(onid: number, tsid: number, sid: number): boolean;
+    hasFollowing(onid: number, tsid: number, sid: number): boolean;
     hasSchedule(): boolean;
     hasTime(): boolean;
-    hasLogoId(onid: any, tsid: any, sid: any): any;
-    hasLogo(logo_id: any, onid: any): boolean;
-    getTransportStreams(onid: any): {};
-    getServices(onid: any, tsid: any): {};
+    hasLogoId(onid: number, tsid: number, sid: number): boolean;
+    hasLogo(logo_id: number, onid: number): boolean;
+    getTransportStreams(onid: number): {
+        [key: string]: any;
+    };
+    getServices(onid: number, tsid: number): {
+        [key: string]: any;
+    };
     getOriginalNetworkId(): number;
     getTransportStreamId(): number;
-    getServiceIds(): unknown[];
-    getPresent(onid: any, tsid: any, sid: any): any;
-    getFollowing(onid: any, tsid: any, sid: any): any;
-    getSchedule(): {};
+    getServiceIds(): number[];
+    getPresent(onid: number, tsid: number, sid: number): {
+        [key: string]: any;
+    };
+    getFollowing(onid: number, tsid: number, sid: number): {
+        [key: string]: any;
+    };
+    getSchedule(): {
+        [key: string]: any;
+    };
     getScheduleAmount(): number[];
     getTime(): Date;
-    getLogoId(onid: any, tsid: any, sid: any): any;
-    getLogo(logo_id: any, onid: any): {};
+    getLogoId(onid: number, tsid: number, sid: number): number;
+    getLogo(logo_id: number, onid: number): {
+        [key: string]: any;
+    };
 }
 export default TsUtil;

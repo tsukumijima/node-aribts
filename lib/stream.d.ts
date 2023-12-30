@@ -1,8 +1,6 @@
-/// <reference path="../src/types.d.ts" />
-/// <reference types="node" />
 /// <reference types="node" />
 import { Buffer } from "buffer";
-import { Transform } from "stream-browserify";
+import { Transform } from "readable-stream";
 import { TsInfo } from "./info";
 import { TsBuffer } from "./buffer";
 declare class TsStream extends Transform {
@@ -21,30 +19,42 @@ declare class TsStream extends Transform {
         transPids: number[];
     };
     trans: {
-        pat: any;
-        cat: any;
-        pmt: any;
+        pat: {
+            [key: string]: any;
+        };
+        cat: {
+            [key: string]: any;
+        };
+        pmt: {
+            [key: string]: any;
+        };
         pmtPids: number[];
         pids: number[];
         rebuild: {
-            pat: any;
+            pat: Buffer;
             patCounter: number;
             patVersion: number;
         };
     };
-    constructor(options?: {});
-    toPacket(buffer: any): {
-        packets: any[];
-        buffer: any;
+    constructor(options?: Partial<typeof TsStream.prototype.options>);
+    toPacket(buffer: Buffer): {
+        packets: Buffer[];
+        buffer: Buffer | null;
     };
-    parse(buffer: any): any;
-    parsePat(pid: any, objPat: any): void;
-    parseCat(pid: any, objCat: any): void;
-    parsePmt(pid: any, objPmt: any): void;
+    parse(buffer: Buffer): Buffer | null;
+    parsePat(pid: number, objPat: {
+        [key: string]: any;
+    }): void;
+    parseCat(pid: number, objCat: {
+        [key: string]: any;
+    }): void;
+    parsePmt(pid: number, objPmt: {
+        [key: string]: any;
+    }): void;
     updatePids(): void;
     rebuildPat(): void;
     createPat(): Buffer;
-    _transform(chunk: any, encoding: any, callback: any): void;
-    _flush(callback: any): void;
+    _transform(chunk: any, encoding: string, callback: Function): void;
+    _flush(callback: Function): void;
 }
 export default TsStream;

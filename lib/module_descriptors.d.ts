@@ -3,6 +3,8 @@ import { Buffer } from "buffer";
 declare class TsModuleDescriptors {
     buffer: Buffer;
     constructor(buffer: Buffer);
-    decode(): any[];
+    decode(): {
+        [key: string]: any;
+    }[];
 }
 export default TsModuleDescriptors;
