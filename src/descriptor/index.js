@@ -41,6 +41,7 @@ module.exports = {
     TsDescriptorDataBroadcastId: require("./data_broadcast_id"),
     TsDescriptorMaterialInformation: require("./material_information"),
     TsDescriptorHybridInformation: require("./hybrid_information"),
+    TsDescriptorBroadcastId: require("./broadcast_id"),
     TsDescriptorHierarchicalTransmission: require("./hierarchical_transmission"),
     TsDescriptorDigitalCopyControl: require("./digital_copy_control"),
     TsDescriptorNetworkIdentification: require("./network_identification"),
