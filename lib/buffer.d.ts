@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { Buffer } from "buffer";
 export declare class TsBuffer {
     chunks: Buffer[];
@@ -6,5 +5,5 @@ export declare class TsBuffer {
     entireLength: number;
     add(chunk: Buffer): void;
     reset(): void;
-    concat(): Buffer;
+    concat(): Buffer<ArrayBuffer>;
 }

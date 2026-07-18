@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { Buffer } from "buffer";
 interface Packet {
     _raw: Buffer;

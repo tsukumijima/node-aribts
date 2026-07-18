@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { Buffer } from "buffer";
 import { Transform } from "readable-stream";
 import { TsInfo } from "./info";

@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { Buffer } from "buffer";
 declare class TsReader {
     buffer: Buffer;
@@ -7,7 +6,7 @@ declare class TsReader {
     readBitsRaw(length: number): number;
     readBits(length: number): number;
     readBytesRaw(length: number): Buffer;
-    readBytes(length: number): Buffer;
+    readBytes(length: number): Buffer<ArrayBufferLike>;
     next(length: number): void;
     previous(length: number): void;
     bslbf(length: number): number;

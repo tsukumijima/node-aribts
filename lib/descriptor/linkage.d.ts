@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { Buffer } from "buffer";
 declare class TsDescriptorLinkage {
     buffer: Buffer;

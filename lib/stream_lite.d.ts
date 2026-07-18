@@ -1,5 +1,3 @@
-/// <reference types="node" />
-/// <reference types="node" />
 import { Buffer } from "buffer";
 import { EventEmitter } from "events";
 import { TsInfo } from "./info";

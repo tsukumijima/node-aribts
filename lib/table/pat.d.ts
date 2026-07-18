@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { Buffer } from "buffer";
 declare class TsTablePat {
     buffer: Buffer;
@@ -6,6 +5,6 @@ declare class TsTablePat {
     decode(): {
         [key: string]: any;
     };
-    encode(objPat: any): Buffer;
+    encode(objPat: any): Buffer<ArrayBuffer>;
 }
 export default TsTablePat;
