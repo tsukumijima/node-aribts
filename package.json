@@ -4,7 +4,7 @@
   "description": "MPEG-2 TS Stream Tool for node",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc --build",
+    "build": "tsc",
     "watch": "tsc -w",
     "clean": "rimraf lib *.tsbuildinfo",
     "prepublishOnly": "npm run clean && npm run build",
@@ -23,7 +23,7 @@
     "readable-stream": "^4.5.2"
   },
   "devDependencies": {
-    "@types/node": "^18.11.0",
+    "@types/node": "^22.20.0",
     "@types/readable-stream": "^4.0.10",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3"

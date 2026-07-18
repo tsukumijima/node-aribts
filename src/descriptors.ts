@@ -271,6 +271,12 @@ class TsDescriptors {
 
                     break;
 
+                case 0x85:
+                    // Broadcast id descriptor
+                    objDescriptor = new tsDescriptor.TsDescriptorBroadcastId(buffer).decode();
+
+                    break;
+
                 case 0xC0:
                     // Hierarchical transmission descriptor
                     objDescriptor = new tsDescriptor.TsDescriptorHierarchicalTransmission(buffer).decode();

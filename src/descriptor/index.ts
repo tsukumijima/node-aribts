@@ -40,6 +40,7 @@ import TsDescriptorPartialTransportStream from "./partial_transport_stream";
 import TsDescriptorDataBroadcastId from "./data_broadcast_id";
 import TsDescriptorMaterialInformation from "./material_information";
 import TsDescriptorHybridInformation from "./hybrid_information";
+import TsDescriptorBroadcastId from "./broadcast_id";
 import TsDescriptorHierarchicalTransmission from "./hierarchical_transmission";
 import TsDescriptorDigitalCopyControl from "./digital_copy_control";
 import TsDescriptorNetworkIdentification from "./network_identification";
@@ -132,6 +133,7 @@ export {
     TsDescriptorDataBroadcastId,
     TsDescriptorMaterialInformation,
     TsDescriptorHybridInformation,
+    TsDescriptorBroadcastId,
     TsDescriptorHierarchicalTransmission,
     TsDescriptorDigitalCopyControl,
     TsDescriptorNetworkIdentification,
