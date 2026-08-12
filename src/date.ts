@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 type Year = number;
 type Month = number;
 type Day = number;

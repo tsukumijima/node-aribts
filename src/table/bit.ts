@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import { calc } from "../crc32";
 import TsReader = require("../reader");
 import TsDescriptors = require("../descriptors");

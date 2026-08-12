@@ -1,4 +1,4 @@
-import { decode } from "iconv-lite";
+import { Buffer } from "buffer";
 import charTable = require("./char_table");
 
 const charCode = {

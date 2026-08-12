@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 export class TsBuffer {
     chunks: Buffer[] = [];
     length = 0;

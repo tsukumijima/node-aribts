@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 class TsReader {
     constructor(public buffer: Buffer, public position = 0) {
     }

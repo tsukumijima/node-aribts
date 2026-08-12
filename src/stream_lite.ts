@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import { EventEmitter } from "events";
 import { TsInfo } from "./info";
 import TsPacket = require("./packet");

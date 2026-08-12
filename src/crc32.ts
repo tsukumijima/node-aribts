@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import { crc32Table, pngCrc32Table } from "./crc32_table";
 
 export const calc = function (buffer: Buffer): number {

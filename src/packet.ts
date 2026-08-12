@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import TsReader = require("./reader");
 import TsWriter = require("./writer");
 

@@ -1,3 +1,4 @@
+import { Buffer } from "buffer";
 import * as crc32 from "./crc32";
 import logoClut = require("./logo_clut");
 
