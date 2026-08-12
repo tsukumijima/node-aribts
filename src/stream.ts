@@ -1,10 +1,14 @@
-const { Transform } = require("stream");
-const { TsInfo } = require("./info");
-const { TsBuffer } = require("./buffer");
-const TsPacket = require("./packet");
-const tsTable = require("./table");
+import { Transform, type TransformCallback } from "stream";
+import { TsInfo } from "./info";
+import { TsBuffer } from "./buffer";
+import TsPacket = require("./packet");
+import tsTable = require("./table");
 
 class TsStream extends Transform {
+    options: any;
+    buffer: any;
+    info: any;
+    trans: any;
     constructor(options = {}) {
         super();
 
@@ -89,7 +93,7 @@ class TsStream extends Transform {
 
             // Emit "packet" event
             if (this.listenerCount("packet")) {
-                this.emit("packet", objBasic.PID, tsPacket.decode(packet));
+                this.emit("packet", objBasic.PID, tsPacket.decode());
             }
 
             // Exists data
@@ -321,7 +325,7 @@ class TsStream extends Transform {
                         } else if (tableId >= 0x4E && tableId <= 0x6F) {
                             // EIT
                             if (this.listenerCount("eit")) {
-                                let objEit = new tsTable.TsTableEit.decode(section);
+                                let objEit = tsTable.TsTableEit.decode(section);
 
                                 if (objEit !== null) {
                                     this.emit("eit", objBasic.PID, objEit);
@@ -375,7 +379,7 @@ class TsStream extends Transform {
                         } else if (tableId === 0xC4) {
                             // BIT
                             if (this.listenerCount("bit")) {
-                                let objBit = new tsTable.TsTableBit.decode(section);
+                                let objBit = tsTable.TsTableBit.decode(section);
 
                                 if (objBit !== null) {
                                     this.emit("bit", objBasic.PID, objBit);
@@ -524,6 +528,10 @@ class TsStream extends Transform {
     rebuildPat() {
         // Rebuild PAT
         let objPacket = {
+            _raw: Buffer.alloc(188, 0xFF),
+
+            sync_byte: 0x47,
+            transport_error_indicator: 0,
             payload_unit_start_indicator: 1,
             transport_priority: 1,
             PID: 0,
@@ -567,7 +575,7 @@ class TsStream extends Transform {
         }
 
         objPacket.data_byte = Buffer.concat([Buffer.alloc(1), bufferPat]);
-        this.trans.rebuild.pat = new TsPacket(Buffer.alloc(188, 0xFF)).encode(objPacket);
+        this.trans.rebuild.pat = new TsPacket(objPacket._raw).encode(objPacket);
 
         this.trans.rebuild.patVersion = (this.trans.rebuild.patVersion + 1) & 0x1F;
     }
@@ -582,7 +590,7 @@ class TsStream extends Transform {
         return bufferPacket;
     }
 
-    _transform(chunk, encoding, callback) {
+    _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): void {
         // Add chunk to buffer
         this.buffer.add(chunk);
 
@@ -600,7 +608,7 @@ class TsStream extends Transform {
         callback();
     }
 
-    _flush(callback) {
+    _flush(callback: TransformCallback): void {
         // Parse buffer
         let buffer = this.parse(this.buffer.concat());
 
