@@ -211,16 +211,18 @@ class TsPacket {
                 writer.bslbf(1, objAF.splicing_point_flag);
                 writer.bslbf(1, objAF.transport_private_data_flag);
                 writer.bslbf(1, objAF.adaptation_field_extension_flag);
+                // 33ビットの PCR base を上位2ビットと下位31ビットに分け、32ビットのビット演算でも全ビットを保持する
                 if (objAF.PCR_flag === 1) {
                     writer.uimsbf(2, (objAF.program_clock_reference_base / 0x80000000) | 0);
-                    writer.uimsbf(31, (objAF.program_clock_reference_base | 0) >> 1);
-                    writer.bslbf(6, 0);    // reserved
+                    writer.uimsbf(31, objAF.program_clock_reference_base & 0x7fffffff);
+                    writer.bslbf(6, 0b111111);    // reserved
                     writer.uimsbf(9, objAF.program_clock_reference_extension);
                 }
+                // OPCR も PCR と同じ33ビットの base と9ビットの extension の形式で出力する
                 if (objAF.OPCR_flag === 1) {
                     writer.uimsbf(2, (objAF.original_program_clock_reference_base / 0x80000000) | 0);
-                    writer.uimsbf(31, (objAF.original_program_clock_reference_base | 0) >> 1);
-                    writer.bslbf(6, 0);    // reserved
+                    writer.uimsbf(31, objAF.original_program_clock_reference_base & 0x7fffffff);
+                    writer.bslbf(6, 0b111111);    // reserved
                     writer.uimsbf(9, objAF.original_program_clock_reference_extension);
                 }
                 if (objAF.splicing_point_flag === 1) {
