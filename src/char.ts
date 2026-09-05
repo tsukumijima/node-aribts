@@ -1,6 +1,6 @@
 import { Buffer } from "buffer";
-import { decode } from "iconv-lite";
 import charTable from "./char_table";
+const shiftJisDecoder = new TextDecoder("shift_jis");
 
 const charCode = {
     hiragana: 0x30,
@@ -68,7 +68,7 @@ class TsChar {
         }
 
         if (this.sjis.length > 0) {
-            this.result += decode(Buffer.from(this.sjis), "shift-jis");
+            this.result += shiftJisDecoder.decode(Buffer.from(this.sjis));
             this.sjis = [];
         }
 
@@ -264,7 +264,7 @@ class TsChar {
                         const second = this.getNext();
                         if (this.useUnicode(first, second)) {
                             if (this.sjis.length > 0) {
-                                this.result += decode(Buffer.from(this.sjis), "shift-jis");
+                                this.result += shiftJisDecoder.decode(Buffer.from(this.sjis));
                                 this.sjis = [];
                             }
                             this.result += this.getUnicode(first, second);
@@ -316,7 +316,7 @@ class TsChar {
                         const second = this.getNext() & 0x7F;
                         if (this.useUnicode(first, second)) {
                             if (this.sjis.length > 0) {
-                                this.result += decode(Buffer.from(this.sjis), "shift-jis");
+                                this.result += shiftJisDecoder.decode(Buffer.from(this.sjis));
                                 this.sjis = [];
                             }
                             this.result += this.getUnicode(first, second);

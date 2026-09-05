@@ -1,5 +1,6 @@
 import { Buffer } from "buffer";
 import { Transform } from "readable-stream";
+import type { TransformCallback } from "stream";
 import { TsInfo } from "./info";
 import { TsBuffer } from "./buffer";
 import TsPacket from "./packet";
@@ -565,6 +566,10 @@ class TsStream extends Transform {
     rebuildPat() {
         // Rebuild PAT
         let objPacket = {
+            _raw: Buffer.alloc(188, 0xFF),
+
+            sync_byte: 0x47,
+            transport_error_indicator: 0,
             payload_unit_start_indicator: 1,
             transport_priority: 1,
             PID: 0,
@@ -608,7 +613,7 @@ class TsStream extends Transform {
         }
 
         objPacket.data_byte = Buffer.concat([Buffer.alloc(1), bufferPat]);
-        this.trans.rebuild.pat = new TsPacket(Buffer.alloc(188, 0xFF)).encode(objPacket as any);
+        this.trans.rebuild.pat = new TsPacket(objPacket._raw).encode(objPacket);
 
         this.trans.rebuild.patVersion = (this.trans.rebuild.patVersion + 1) & 0x1F;
     }
@@ -623,7 +628,7 @@ class TsStream extends Transform {
         return bufferPacket;
     }
 
-    _transform(chunk: any, encoding: string, callback: Function) {
+    _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): void {
         // Add chunk to buffer
         this.buffer.add(chunk);
 
@@ -641,7 +646,7 @@ class TsStream extends Transform {
         callback();
     }
 
-    _flush(callback: Function) {
+    _flush(callback: TransformCallback): void {
         // Parse buffer
         let buffer = this.parse(this.buffer.concat());
 

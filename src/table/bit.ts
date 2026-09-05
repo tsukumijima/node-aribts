@@ -54,7 +54,7 @@ export function decode(buffer: Buffer): BIT {
 
     objBit.first_descriptors = new TsDescriptors(reader.readBytesRaw(objBit.first_descriptors_length)).decode();
     objBit.broadcaster_descriptors = [];
-    while ((reader.position >> 3) - 3 < objBit.section_length) {
+    while ((reader.position >> 3) - 3 < objBit.section_length - 4) {
         const broadcaster_id = reader.uimsbf(8);
         reader.next(4); // reserved_future_use
         const broadcaster_descriptors_length = reader.uimsbf(12);
