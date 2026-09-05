@@ -1,5 +1,6 @@
 import { Buffer } from "buffer";
 import { Transform } from "readable-stream";
+import type { TransformCallback } from "stream";
 import { TsInfo } from "./info";
 import { TsBuffer } from "./buffer";
 declare class TsStream extends Transform {
@@ -53,7 +54,7 @@ declare class TsStream extends Transform {
     updatePids(): void;
     rebuildPat(): void;
     createPat(): Buffer;
-    _transform(chunk: any, encoding: string, callback: Function): void;
-    _flush(callback: Function): void;
+    _transform(chunk: any, encoding: BufferEncoding, callback: TransformCallback): void;
+    _flush(callback: TransformCallback): void;
 }
 export default TsStream;
